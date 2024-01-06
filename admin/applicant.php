@@ -39,6 +39,22 @@
                       $app = $pdo->prepare("SELECT * FROM `applicant` WHERE `year` = ?");
                       $app->execute([$school_app_year]);?>
                     <h4 class="card-title">List</h4>
+                    <div id="offerResult">
+                      <?php 
+                      if( isset($_POST["offer"]))
+                      { 
+                          $appid = $_POST["appid"];
+                          $actn = $_POST["act"];
+                          $message = $appid."".$actn;
+                        //  echo '<script>alert('.$message.')</script>';
+                          $updtapp = $pdo->prepare("UPDATE `applicant` SET `adm_status`= ? WHERE `id`=?");
+                          $updtapp->execute([$actn, $appid]);
+                          if($updtapp)
+                          {
+                            echo '<div class="alert alert-success">Updated!!</div><script>setTimeout(function(){location.href="applicant"},1000)</script>';
+                          }
+                      }?>
+                    </div>
                     <div class="row overflow-auto">
                       <div class="col-12">
                         <table id="order-listing" class="table" cellspacing="0" width="100%">
@@ -53,8 +69,8 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <?php 
-                            while($approw = $app->fetch()){ $appnos = $approw["application_no"];?> 
+                            <?php $srn = 0;
+                            while($approw = $app->fetch()){ $appnos = $approw["application_no"]; $srn++;?> 
                             <tr>
                               <td>1</td>
                               <td><?php echo $approw["application_no"];?></td>
@@ -62,11 +78,15 @@
                               <td><?php echo $approw["gender"];?></td>
                               <td><?php echo $approw["adm_status"];?></td>
                               <td class="text-right">
-                                      <button type="button" class="mdi mdi-eye text-info" data-bs-toggle="modal" data-bs-target="#exampleModal">View </button>
+                                  <button type="button" class="mdi mdi-eye text-info" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $approw["id"];?>">View </button>
                                     
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal<?php echo $approw["id"];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                       <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
+                                          <?php if($approw["app_status"] == 'incomplete'){
+                                          echo '<div class="alert alert-success">This applicant is yet complete his/her application!!</div>';
+
+                                          }else{?>
                                           <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Applicant details</h5>
                                             <span class="text-right">  <b>Admission status:</b> <?php if($approw["adm_status"] == "No"){ echo "<a class='btn btn-danger'>Application under review</a>"; $btncolor="btn-success"; $adst = "Yes"; $btnact = "Give Offer";}else{ echo "<div class='btn btn-info'>Offered Admission</div>"; $btncolor="btn-danger";  $adst = "No"; $btnact = "Deny Offer";}?></span>
@@ -75,6 +95,7 @@
                                             </button>
                                           </div>
                                           <div class="modal-body">
+
                                           <div class="row">
                                               <div class="col-6">
                                                 Name: <?php echo $approw["names"];?><br>
@@ -141,17 +162,19 @@
 
                                               </div>
                                               </div>
-                                              <div id="offerResult"></div>
+
                                           </div>
                                           <div class="modal-footer">
-                                            <form name="goffer" id="offerForm" method="post">
-                                              <input name="appid" value="<?php echo $olrow["id"];?>" type="hidden">
+                                            <form name="goffer<?php echo $srn;?>" id="offerForm" method="post">
+                                              <input name="appid" value="<?php echo $approw["id"];?>" type="hidden">
                                               <input name="act" value="<?php echo $adst;?>" type="hidden">
-                                              <input class="btn <?php echo $btncolor;?>" type="button" name="offer" value="<?php echo $btnact;?>" id="offerBtn">
+                                              <input class="btn <?php echo $btncolor;?>" type="submit" name="offer" value="<?php echo $btnact;?>" id="offerBtn">
                                             </form>
                                             <!-- <form name="doffer" method="post" id="offerForm"><input name="actn" type="hidden" value="0"><input class="btn btn-danger" name="offer" value="Denied Offer" id="offerBtn"></form> -->
+
+
                                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                                          </div>
+                                          </div><?php }?>
                                         </div>
                                       </div>
                                     </div>
@@ -173,25 +196,3 @@
             </div>
           </div>
          <?php include("footer.php");?>
-    <script>
-    $(document).ready(function() {
-      $("#offerForm").submit(function(e) {
-        e.preventDefault()
-        let data = $("#offerForm").serialize()
-        let appReq = $.ajax({
-          url: "give_offer.php",
-          type: "POST",
-          data: data,
-          beforeSend: () => {
-            $("#offerBtn").html("Processing...")
-            $("#offerBtn").attr("disabled", "true")
-          },
-          complete: () => {
-            $("#offerBtn").html("Done")
-            $("#offerBtn").removeAttr("disabled")
-          },
-          success: (res) => $("#offerResult").html(res)
-        })
-      })
-    })
-    </script>

@@ -50,6 +50,5 @@
     <script src="assets/js/inputmask.js"></script>
     <!-- End custom js for this page -->
     <!-- End custom js for this page -->
-<script src="../jquery.min.js"></script>
   </body>
 </html>

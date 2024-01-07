@@ -2,7 +2,7 @@
             <span class="nav-item-head">Menus</span>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="dashboard">
+            <a class="nav-link" href="index">
               <i class="mdi mdi-compass-outline menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -14,12 +14,12 @@
             </a>
           </li>
           <hr>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="accommodation">
               <i class="mdi mdi-home-variant  menu-icon"></i>
               <span class="menu-title">Accommodation</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="admitted">
               <i class="mdi mdi-account-multiple menu-icon"></i>
@@ -39,17 +39,17 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="exam">
+            <a class="nav-link" href="../rms" target="_blank">
               <i class="mdi mdi-television-guide menu-icon"></i>
               <span class="menu-title">Exam Portal</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="hostel">
               <i class="mdi mdi-hospital-building menu-icon"></i>
               <span class="menu-title">Hostel</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="payment">
               <i class=" mdi mdi-currency-ngn menu-icon"></i>

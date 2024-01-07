@@ -40,10 +40,10 @@
                         echo '<div class="alert alert-info">Course Updated!!</div><script>setTimeout(function(){location.href="courses"},1000)</script>';
                         }
                       }
-                      if(isset($_POST["crsdel"]))
+                      if(isset($_GET["crsdel"]))
                       {
                         $delcouse = $pdo->prepare("DELETE FROM `course` WHERE `id`=?");
-                        $delcouse->execute([$_POST["id"]]);
+                        $delcouse->execute([encryptor('decrypt',$_GET["id"])]);
                         if($delcouse)
                         {
                         echo '<div class="alert alert-info">Course Deleted!!</div><script>setTimeout(function(){location.href="courses"},1000)</script>';
@@ -63,14 +63,14 @@
                         <table id="order-listing" class="table" cellspacing="0" width="100%">
                           <thead>
                             <tr class="bg-primary text-white">
-                              <th style="font-size: 7pt;">SN</th>
-                              <th style="font-size: 7pt;">Programmes</th>
-                              <th style="font-size: 7pt;">Title</th>
-                              <th style="font-size: 7pt;">Code</th>
-                              <th style="font-size: 7pt;">Unit</th>
-                              <th style="font-size: 7pt;">Level</th>
-                              <th style="font-size: 7pt;">Semester</th>
-                              <th style="font-size: 7pt;">Action</th>
+                              <th >SN</th>
+                              <th >Programmes</th>
+                              <th >Title</th>
+                              <th >Code</th>
+                              <th >Unit</th>
+                              <th >Level</th>
+                              <th >Semester</th>
+                              <th >Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -78,16 +78,16 @@
                             $csn = 0;
                             while($cours = $dcourse->fetch()){ $csn++;?>
                             <tr>
-                              <td style="font-size: 7pt;"><?php echo $csn;?></td>
-                              <td style="font-size: 7pt;"><?php echo $cours["programme"];?></td>
-                              <td style="font-size: 8pt;"><?php echo $cours["title"];?></td>
-                              <td style="font-size: 8pt;"><?php echo $cours["code"];?></td>
-                              <td style="font-size: 8pt;"><?php echo $cours["unit"];?></td>
-                              <td style="font-size: 7pt;"><?php echo $cours["level"];?></td>
-                              <td style="font-size: 8pt;"><?php echo $cours["semester"];?></td>
-                              <td class="text-right" style="font-size: 7pt;">
+                              <td ><?php echo $csn;?></td>
+                              <td ><?php echo $cours["programme"];?></td>
+                              <td ><?php echo $cours["title"];?></td>
+                              <td ><?php echo $cours["code"];?></td>
+                              <td ><?php echo $cours["unit"];?></td>
+                              <td ><?php echo $cours["level"];?></td>
+                              <td ><?php echo $cours["semester"];?></td>
+                              <td class="text-right" >
                                 <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#EditModal<?php echo $csn;?>">
-                                  <i class="mdi mdi-pen text-primary"></i>Edit</button>
+                                  <i class="mdi mdi-pen text-primary"></i></button>
                                   <!--Edit Courses Start-->
                                   <div class="modal fade" id="EditModal<?php echo $csn;?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -150,10 +150,8 @@
                                     </div>
                                   </div>
                                   <!--Edit Courses End-->
-                                  <form name="formdel" method="post">
-                                    <input name="cid" value="<?php echo $cours["id"];?>" type="hidden" >
-                                <button class="btn btn-light" name="crsdel" > <i class=" mdi mdi-delete text-danger"></i>Delete</button>
-                                  </form>
+                                <a href="?crsdel=&cid=<?php echo encryptor('encrypt',$cours["id"]);?>" class="btn btn-light" name="crsdel" > <i class=" mdi mdi-delete text-danger"></i></a>
+                                 
                               </td>
                             </tr><?php }?>
                           </tbody>

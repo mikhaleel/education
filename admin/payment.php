@@ -28,6 +28,9 @@
                     <h4 class="card-title">List</h4>
                     <div class="row overflow-auto">
                       <div class="col-12">
+                      <?php 
+                      $fetchpay = $pdo->query("SELECT * FROM `stu_payloader` WHERE `session` = ? AND `semester` = ?");
+                      $fetchpay->execute([]); ?>
                         <table id="order-listing" class="table" cellspacing="0" width="100%">
                           <thead>
                             <tr class="bg-primary text-white">

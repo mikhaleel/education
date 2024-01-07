@@ -25,18 +25,15 @@
                   <form class="forms-sample">
                     <div class="form-group">
                       <!-- <label for="exampleInputUsername1">Username</label> -->
-                      <select class="form-control" id="report" name="report">
-                         <option>Choose</option>
-                         <option value="report_payment_log"> Payment Logs</option>
-                                <option value="report_payment_summary"> Payments Summary</option>
-                                <option value="report_transaction_log"> Transaction Logs</option>
-
-                                <option value="report_payment_schedule"> Payment Schedule </option>
-                                                                                        
-                                <option value="report_student_list"> Student Lists</option>
-                                <option value="report_applicants"> Applicants</option>                                
-                                <option value="report_accomodation"> Accommodation</option>
-                        </select>
+                      <ul>
+                          <li><a href="?report_payment_log"> Courses</a></li> 
+                          <li><a href="?report_payment_summary"> Payments Summary</a></li> 
+                          <li><a href="?report_transaction_log"> Transaction Logs</a></li> 
+                          <li><a href="?report_payment_schedule"> Payment Schedule </a></li> 
+                          <li><a href="?report_student_list"> Student Lists</a></li> 
+                          <li><a href="?report_applicants"> Applicants</a></li>                                 
+                                <!-- <option value="?report_accomodation"> Accommodation</option> -->
+                      </ul>
                     </div>
                    
                   </form>
@@ -47,6 +44,7 @@
               <div class="card">
               
                 <div class="card-body">
+                  <?php if(isset($_GET[""])){?>
                   <h4 class="card-title">Report Parameter </h4>
                   <div class="alert alert-success dark" role="alert">
                       CITIZENS LIST                    </div>
@@ -79,6 +77,7 @@
                     <button type="submit" class="btn btn-primary mr-2">Display</button>
                   </p>
                   </form>
+                  <?php }?>
                 </div>
                               </div>
             </div>

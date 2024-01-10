@@ -116,6 +116,7 @@
                                               <?php 
                                               $olevel = $pdo->query("SELECT * FROM `app_olevel` WHERE `appno`='$appnos'");
                                               ?>
+                                              <div class="table-responsive">
                                               <table>
                                                 <tr>
                                                   <th>#</th>
@@ -135,30 +136,35 @@
                                                 <?php }?>
                                               </table>
                                               </div>
+                                              </div>
                                               
                                               <div class="col-6">
                                               <h4>Other Qualifications</h4>
                                               <?php 
                                               $olevel = $pdo->query("SELECT * FROM `app_institute` WHERE `appno`='$appnos'");
                                               ?>
+                                              <div class="table-responsive">
                                               <table>
-                                                <tr>
-                                                  <th>#</th>
-                                                  <th>Institute</th>
-                                                  <th>Course</th>
-                                                  <th>Class</th>
-                                                  <th>Date</th>
-                                                </tr>
                                                 <?php while($olrow = $olevel->fetch()){?>
                                                 <tr>
-                                                  <td>1</td>
-                                                  <td><?php echo $olrow["institute"];?></td>
+                                                  <th>Institute</th>
+                                                  <td><?php echo $olrow["institution"];?></td>
+                                                </tr>
+                                                <tr>
+                                                  <th>Class</th>
                                                   <td><?php echo $olrow["class"];?></td>
+                                                </tr>
+                                                <tr>
+                                                <th>Course</th>
                                                   <td><?php echo $olrow["course"];?></td>
+                                                </tr>
+                                                <tr>
+                                                  <th>Date</th>
                                                   <td><?php echo $olrow["date"];?></td>
                                                 </tr>
                                                 <?php }?>
                                               </table>
+                                            </div>
 
                                               </div>
                                               </div>
@@ -171,8 +177,6 @@
                                               <input class="btn <?php echo $btncolor;?>" type="submit" name="offer" value="<?php echo $btnact;?>" id="offerBtn">
                                             </form>
                                             <!-- <form name="doffer" method="post" id="offerForm"><input name="actn" type="hidden" value="0"><input class="btn btn-danger" name="offer" value="Denied Offer" id="offerBtn"></form> -->
-
-
                                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                                           </div><?php }?>
                                         </div>

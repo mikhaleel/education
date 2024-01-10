@@ -43,8 +43,8 @@
                               <th>Programmes</th>
                               <!-- <th>Acceptance Fee</th>
                               <th>Screening Fee</th> -->
-                              <th>Batch</th>
-                              <th>Action</th>
+                              <!-- <th>Batch</th>
+                              <th>Action</th> -->
                             </tr>
                           </thead>
                           <tbody>
@@ -58,13 +58,13 @@
                               <td><?php echo $admrow["programme"];?></td>
                               <!-- <td><?php //echo $admrow["acceptance_fee"];?></td>
                               <td><?php //echo $admrow["screening_fee"];?></td> -->
-                              <td><?php echo $admrow["admission_batch"];?></td>
-                              <td class="text-right">
+                              <!-- <td><?php // echo $admrow["admission_batch"];?></td> -->
+                              <!-- <td class="text-right">
                                 <button class="btn btn-light">
                                   <i class="mdi mdi-eye text-primary"></i>View </button>
                                 <button class="btn btn-light">
                                   <i class="mdi mdi-close text-danger"></i>Remove </button>
-                              </td>
+                              </td> -->
                             </tr>
                            <?php 
                             }?>

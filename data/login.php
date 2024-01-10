@@ -20,7 +20,7 @@ if(
 	 
 	 $depts = @$trows["department"];
 	 
-	 $deptids = $pdo->prepare("SELECT dept_id FROM `departments` WHERE `names` = ?");
+	 $deptids = $pdo->prepare("SELECT `dept_id`,`names` FROM `departments` WHERE `names` = ?");
 	 $deptids->execute([$depts]);
 	 $dpt_ids = $deptids->fetch();
 
@@ -43,10 +43,13 @@ if(
 				
 			 //   echo '<script>alert("'.$trows["department"].'")</script>';
 				$_SESSION["username"] = $trows["username"];
+				$_SESSION["gsm"] = $trows["gsm"];
+				$_SESSION["password"] = $trows["password"];
 				$_SESSION["names"] = $trows["names"];
 				$_SESSION["designation"] = $trows["designation"];
 				$_SESSION["school"] = $trows["school"];
 				$_SESSION["dept_id"] = $dpt_ids["dept_id"];//$trows["department"];
+				//$_SESSION["dept_name"] = $dpt_ids["names"];
 				$_SESSION["department"] =$trows["department"];
 				$_SESSION["usertype"] = $trows["usertype"];
 				$_SESSION["accesslevel"] = $trows["accesslevel"];

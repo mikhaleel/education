@@ -23,23 +23,37 @@
                   <div class="card-body">
                   <div class="row">
                       <div class="col-12">
-                        <form action="#">
+                        <form action="" method="post" >
                           <div class="form-group d-flex">
                                 <div class="col-6">
-                            <input type="text" class="form-control" placeholder="Matno | Name | Email | Phone number">
+                            <input type="text" class="form-control" placeholder="Matno | Name | Email | Phone number" name="searchval" >
                                 </div>
                                 <div class="col-5">
-                            <select type="text" class="form-control" placeholder="Search Here">
+                            <select type="text" class="form-control" placeholder="Search Here" name="status">
                                 <option>Select</option>
-                                <option>Active</option>
-                                <option>Inactive</option>
+                                <option value="1" >Active</option>
+                                <option value="0" >Inactive</option>
                             </select>
                                 </div>
-                            <button type="submit" class="btn btn-primary border ms-3">Search</button>
+                            <button type="submit" name="submit" class="btn btn-primary border ms-3">Search</button>
                           </div>
                         </form>
                       </div>
                       </div>
+                      <?php 
+                      $stat_arr = array(1=>"Active", 0=>"InActive");
+                      if(isset($_POST["submit"]))
+                      {
+                        $searchval = "%".$_POST["searchval"]."%"; 
+                        $studentsn = $pdo->prepare("SELECT * FROM `students` WHERE (`programme` LIKE ? OR `matno` LIKE ? OR `names` LIKE ? OR `email` LIKE ? OR `contact` LIKE ?) AND `stat` = ? ");
+                        $studentsn->execute([$searchval,$searchval,$searchval,$searchval,$searchval, $_POST["status"]]);
+                      }
+                      else
+                      {
+                        $studentsn = $pdo->prepare("SELECT * FROM `students`");
+                        $studentsn->execute();
+                      }
+                      ?>
                     <h4 class="card-title">List</h4>
                     <div class="row overflow-auto">
                       <div class="col-12">
@@ -48,40 +62,42 @@
                             <tr class="bg-primary text-white">
                               <th>SN</th>
                               <th>MAT No</th>
-                              <th>APP No</th>
-                              <th>UTME</th>
+                              <!-- <th>APP No</th> -->
+                              <!-- <th>UTME</th> -->
                               <th>NAMES</th>
                               <th>GENDER</th>
                               <th>STATE</th>
+                              <!-- <th>COLLEGE</th> -->
+                              <!-- <th>PROGRAMME</th> -->
                               <th>LEVEL</th>
-                              <th>COLLEGE</th>
-                              <th>PROGRAMME</th>
-                              <th>DEPARTMENT</th>
+                              <!-- <th>DEPARTMENT</th> -->
                               <th>STATUS</th>
                               <th>ACTION</th>
                             </tr>
                           </thead>
                           <tbody>
+                            <?php 
+                            $ns = 0; while($strow = $studentsn->fetch()){ $ns++;?>
                             <tr>
-                              <td>1</td>
-                              <td>NDCS/022/0185</td>
-                              <td>NSPZ/EV/APP/ND/2023/0185</td>
-                              <td>12330220185</td>
-                              <td>MOSES MARY</td>
-                              <td>Female</td>
-                              <td>Niger</td>
-                              <td>ND</td>
-                              <td>Science</td>
-                              <td>Statistics</td>
-                              <td>Computer</td>
-                              <td>Active</td>
+                              <td><?php echo $ns;?></td>
+                              <td><?php echo $strow["matno"];?></td>
+                              <!-- <td><?php //echo $strow["applicationno"];?></td> -->
+                              <!-- <td><?php //echo $strow["utme"];?></td> -->
+                              <td><?php echo $strow["names"];?></td>
+                              <td><?php echo $strow["sex"];?></td>
+                              <td><?php echo $strow["states"];?></td>
+                              <!-- <td><?php //echo $strow["college_id"];?></td> -->
+                              <!-- <td><?php //echo $strow["programme"];?></td> -->
+                              <td><?php echo $strow["level"];?></td>
+                              <!-- <td><?php //echo $strow["department"];?></td> -->
+                              <td><?php echo $stat_arr[$strow["stat"]];?></td>
                               <td class="text-right">
-                                <button class="btn btn-light">
-                                  <i class="mdi mdi-eye text-primary"></i> View </button>
-                                <button class="btn btn-light">
-                                  <i class=" mdi mdi-close text-danger"></i> Remove </button>
+                                <a class="btn btn-light" href="students/index?matno=<?php echo encryptor('encrypt',$strow["matno"]);?>" target="_blank">
+                                  <i class="mdi mdi-eye text-primary"></i> View </a>
+                                <!-- <button class="btn btn-light"><i class=" mdi mdi-close text-danger"></i> Remove </button> -->
                               </td>
                             </tr>
+                            <?php }?>
                           </tbody>
                         </table>
                       </div>

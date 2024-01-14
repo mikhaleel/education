@@ -1,9 +1,16 @@
 <?php
+if (!isset($_SESSION)){ session_start();}
+if (!isset($_SESSION['pageaccess'])) {
+    header('Location: ../');
+    exit();
+}
 include("../data/db.php");
-if (!isset($_SESSION))
+if(isset($_GET["logout"]))
 {
-  session_start();
-}?>
+  session_destroy();
+  echo '<script>location.replace("../") </script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,7 +152,7 @@ if (!isset($_SESSION))
                 </div>
               </li>
               <li class="nav-item nav-logout d-none d-lg-block">
-                <a class="nav-link" href="../index.php">
+                <a class="nav-link" href="?logout">
                   <i class="mdi mdi-power"></i>Logout
                 </a>
               </li>

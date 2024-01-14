@@ -82,7 +82,7 @@
                               <td><?php echo $strow["level"];?></td>
                               <td><?php echo $stat_arr[$strow["stat"]];?></td>
                               <td class="text-right">
-                                <a class="btn btn-light" href="students/index?matno=<?php echo encryptor('encrypt',$strow["id"]);?>" target="_blank">
+                                <a class="btn btn-light" href="../student/index?matno=<?php echo encryptor('encrypt',$strow["id"]);?>" target="_blank">
                                   <i class="mdi mdi-eye text-primary"></i> View </a>
                                 <!-- <button class="btn btn-light"><i class=" mdi mdi-close text-danger"></i> Remove </button> -->
                               </td>

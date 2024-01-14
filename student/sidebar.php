@@ -9,60 +9,57 @@
                 <!--change to offline or busy as needed-->
               </div>
               <div class="nav-profile-text d-flex ms-0 mb-3 flex-column">
-                <span class="font-weight-semibold mb-1 mt-2 text-center">Antonio Olson</span>
-                <span class="text-secondary icon-sm text-center">Admin</span>
+                <span class="font-weight-semibold mb-1 mt-2 text-center"><?php echo $student_name;?></span>
+                <span class="text-secondary icon-sm text-center"><?php echo $student_matno;?></span>
               </div>
             </a>
           </li>
-          <li class="nav-item pt-3">
-            <a class="nav-link d-block" href="index">
-              <img class="sidebar-brand-logo" src="https://demo.bootstrapdash.com/plus/jquery/template/assets/images/logo.svg" alt="">
-              <img class="sidebar-brand-logomini" src="https://demo.bootstrapdash.com/plus/jquery/template/assets/images/logo-mini.svg" alt="">
-              <div class="small font-weight-light pt-1">Welcome Back! </div>
+          <!-- <li class="nav-item pt-3">
+            <a class="nav-link d-block" href="index"> <div class="small font-weight-light pt-1">Welcome Back! </div>
             </a>
            
-          </li>
+          </li> -->
           <li class="pt-2 pb-1">
             <span class="nav-item-head text-danger">Dashboard</span>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="profile">
+            <a class="nav-link" href="index?matno=<?php echo encryptor('encrypt',$student_id);?>">
               <i class=" mdi mdi-account-card-details menu-icon"></i>
               <span class="menu-title">Profile</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="my_data">
+            <a class="nav-link" href="my_data?matno=<?php echo encryptor('encrypt',$student_id);?>">
               <i class=" mdi mdi-folder-account menu-icon"></i>
               <span class="menu-title">My Data</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="files">
+            <a class="nav-link" href="files?matno=<?php echo encryptor('encrypt',$student_id);?>">
               <i class="mdi mdi-folder-multiple-image  menu-icon"></i>
               <span class="menu-title">Upload Files</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="courses">
+            <a class="nav-link" href="courses?matno=<?php echo encryptor('encrypt',$student_id);?>">
               <i class="mdi mdi-book-variant menu-icon"></i>
               <span class="menu-title">Courses Registration</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="result">
+            <a class="nav-link" href="result?matno=<?php echo encryptor('encrypt',$student_id);?>">
               <i class="mdi mdi-television-guide menu-icon"></i>
               <span class="menu-title">Result</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="accommodation">
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="accommodation?matno=<?php echo encryptor('encrypt',$student_id);?>">
               <i class="mdi mdi-hospital-building menu-icon"></i>
               <span class="menu-title">Accommodation</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="payment">
+            <a class="nav-link" href="payment?matno=<?php echo encryptor('encrypt',$student_id);?>">
               <i class=" mdi mdi-currency-ngn menu-icon"></i>
               <span class="menu-title">Payment/Recipt</span>
             </a>
@@ -73,7 +70,7 @@
            
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../index.php">
+            <a class="nav-link" href="?logout">
               <i class="mdi mdi-power  menu-icon"></i>
               <span class="menu-title">Logout</span>
             </a>

@@ -21,18 +21,44 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
-                 
-                  <p class="alert alert-warning"> <span>New Course Registration for [DIP2 First Semester]</span>                                         
-                                       <button class="btn btn-warning pull-right">Register Now</button>
-                                       </p><hr>                                       </p>
-<!-- <p aligin="center"><a href="javascript:void(0)" data-toggle="modal" data-target="#defaultModal" class="btn btn-primary" title="Add new file" >Upload new file</a></p> -->
-<p>
-                                        <ul class="list-group">
-                                            
-                                   <li class="list-group-item"><a href="#" target="_new">DIP1 First Semester </a> <span class="pull-right"> </span></li>
-                                
-                                  </ul>
-                                          </p>
+                 <?php
+                  if($stu_pay->rowCount() > 0)
+                  {
+                    if($stu_course_reg->rowCount() == 0)
+                    {
+                      ?>
+                      <p class="alert alert-warning"> 
+                        <span>New Course Registration for [<?php echo $student_level;?> <?php echo $semester_arr[$school_activesession];?>]</span>                                         
+                        <a class="btn btn-warning pull-right" href="javascript:void(0);" NAME="coursereg" title="CourseRegistration" onClick=window.open("stu_course_reg?tid=<?php echo encryptor('encrypt',$student_id);?>","Ratting","width=1500,height=1170,left=150,top=50,toolbar=0,status=0,");>Register Now</a>
+                       
+                      </p>
+                      <?php 
+                    }
+                  }
+                  else
+                  {
+                    ?>
+                    <p class="alert alert-info"> 
+                      <span>Please make sure you pay your school fee to enable you access the course Registration page</span>                                         
+                    </p>
+                    <?php 
+                  }?>
+                  <hr>
+                  <p>
+                  <ul class="list-group"> 
+                    <?php 
+                    //fatch all courses reg
+                    $stu_course_reg = $pdo->query("SELECT * FROM `stu_course_reg` WHERE `matno`='$student_matno'");
+                    if($course_reg_row = $stu_course_reg->fetch())
+                    {
+                    ?>
+                    <li class="list-group-item"><a href="stu_course_form?matno=<?php echo encryptor('encrypt',$student_matno);?>&semster=<?php echo encryptor('encrypt',$school_activesemester);?>&level=<?php echo encryptor('encrypt',$course_reg_row["level"]);?>&session=<?php echo encryptor('encrypt',$school_activesession);?>&name=<?php echo encryptor('encrypt',$student_name);?>&prog=<?php echo encryptor('encrypt',$student_programme);?>" target="_new"><?php echo $course_reg_row['level'];?> <?php echo $semester_arr[$course_reg_row['semester']];?> </a> 
+                    
+                    <a class="pull-right btn btn-primary" href="javascript:void(0);" NAME="coursereg" title="CourseRegistration" onClick=window.open("stu_course_reg?tid=<?php echo encryptor('encrypt',$student_id);?>","Ratting","width=1500,height=1170,left=150,top=50,toolbar=0,status=0,");> Edit</a></li>
+                    <?php 
+                    }?>
+                  </ul>
+                 </p>
                   </div>
                 </div>
               </div>

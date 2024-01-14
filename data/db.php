@@ -41,21 +41,21 @@ function cleanstring($string){
   return (trim($string));
 }
 
-    $error = '<div class="alert alert-danger"><a href="javascript:void" class="close" data-dismiss="alert">&times;</a>';
-    $success = '<div class="alert alert-success"><a href="javascript:void" class="close" data-dismiss="alert">&times;</a>';
-    $close = '</div>';
-    $refresh = '<script>setTimeout(function(){location.reload()}, 500)</script>';
+$error = '<div class="alert alert-danger"><a href="javascript:void" class="close" data-dismiss="alert">&times;</a>';
+$success = '<div class="alert alert-success"><a href="javascript:void" class="close" data-dismiss="alert">&times;</a>';
+$close = '</div>';
+$refresh = '<script>setTimeout(function(){location.reload()}, 500)</script>';
 
 $email_id = '';
     
-  $config = $pdo->prepare("SELECT * FROM `config`");
-  $config->execute();
-  $row_config= $config->fetch();
+$config = $pdo->prepare("SELECT * FROM `config`");
+$config->execute();
+$row_config= $config->fetch();
 
-  $_SESSION['session']=$row_config['sessions'];
+$_SESSION['session']=$row_config['sessions'];
 
-  $_SESSION['semester']=$row_config['semester'];
-  $site_title = $row_config['school'];
+$_SESSION['semester']=$row_config['semester'];
+$site_title = $row_config['school'];
 
 $school_names =$row_config['school'];
 $school_address =$row_config['add'];

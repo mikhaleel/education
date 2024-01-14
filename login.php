@@ -56,8 +56,7 @@ if(
 				$_SESSION["pageaccess"] = "pageaccess";
 				$_SESSION["studeymode"] = encryptor("encrypt","Full Time");
 
-				    echo '<div class="alert alert-success outline alert-dismissible fade show" role="alert"><i data-feather="thumbs-up"></i><b>Wait,</b> loading dashboard....</div><script>setTimeout(function(){location.href="admin/"},10000)</script>';
-		
+				    echo '<div class="alert alert-success outline alert-dismissible fade show" role="alert"><i data-feather="thumbs-up"></i><b>Wait,</b> loading dashboard....</div><script>setTimeout(function(){location.href="admin/"},1000)</script>';
 			}
 	}
 	 elseif($checkq->rowCount() == 0)

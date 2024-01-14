@@ -1,4 +1,4 @@
- <?php include "header.php"?>
+ <?php include "header.php";?>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
@@ -27,16 +27,33 @@
                     Email : payment@nigerpoly.edu.ng
                     </div>
                     <ul class="list-group">
-
-                    <a href="#" class="btn btn-warning float-right">Generate School Fee Payment Invoice for DIP2 2022/2023 First Semester</a>
-                    <li class="list-group-item"><strong class="text-primary">DIP2 Second Semester </strong> : [School Fees] - 2021/2022 </strong>        
-
-                    <strong class="text-success"> &#8358;21,200</strong> 
-                    <button  class="btn btn-success pull-right">View Receipt</button>
-
-
-
-                    </li>
+                    <?php
+                      if($stu_p->rowCount() > 0)
+                      {}
+                      else{?>
+                        <a href="#" class="btn btn-warning float-right">Generate School Fee Payment Invoice for DIP2 2022/2023 First Semester</a>
+                     <?php  }?>
+                    <?php          
+                    //fetch all payments
+                    $stu_pay = $pdo->query("SELECT * FROM `stu_payloader` WHERE `matno`='$student_matno'");
+                    while($pay_row = $stu_pay->fetch())
+                    {?>
+                      <li class="list-group-item"><strong class="text-primary"><?php echo $pay_row["level"];?> <?php echo $semester_arr[$pay_row['semester']];?> </strong> : [School Fees] - <?php echo $pay_row["session"];?></strong>  
+                      <strong class="text-success"> &#8358;21,200</strong> 
+                      <?php 
+                      if($pay_row['status']=="paid")
+                      {?>
+                        <a href="stu_reciept" class="btn btn-success pull-right" target="_blank" >View Receipt</a>
+                      <?php 
+                      }else
+                      {?>
+                        <a href="stu_invoice?matno=<?php echo encryptor('encrypt',$student_matno);?>&invtyp=<?php echo encryptor('encrypt',"School Fees");?>" class="btn btn-danger pull-right">Pay Now</a>
+                     <?php
+                      }?>
+                      
+                      </li>
+                    <?php 
+                    };?>
                     </ul>
                       <div class="blockquote blockquote-primary alert-dismissible fade show" role="alert"><i class="zmdi zmdi-natification"></i>
                       <h5><b> NOTICE! </b><br><hr>This is to inform all students that second semester 2021/2022 student registration ends as follows:<br><br>

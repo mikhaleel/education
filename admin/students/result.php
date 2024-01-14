@@ -21,63 +21,66 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
+                  <?php $resultsls= $pdo->query("SELECT `level`, `semester`, `matno` FROM `results` WHERE  `matno`='$student_matno' GROUP BY `level`, `semester`");?>
+                  <?php while($fecthLS = $resultsls->fetch()){?>
                   <a href="javascript:void(0);" NAME="Error Handling"  title="ZeroDivisionError handling" class="btn btn-outline-primary btn-icon-text">
-			<i class="mdi mdi-book-open-page-variant mdi-30px"></i>
-			<span class="d-inline-block text-left">
-			<small class="font-weight-light d-block">DIP1</small>
-			First Semester			</span>
-		</a>
-				<a href="javascript:void(0);" NAME="Error Handling"  title="ZeroDivisionError handling"  class="btn btn-outline-primary btn-icon-text">
-			<i class="mdi mdi-book-open-page-variant mdi-30px"></i>
-			<span class="d-inline-block text-left">
-			<small class="font-weight-light d-block">DIP2</small>
-			Second Semester			</span>
-		</a>
-		    <div class="table-responsive">
-<table id="order-listing" class="table" cellspacing="0" width="100%">
-<tr class="bg-primary text-white">
-<th>#</th>
-<th>Title/Code</th>
-<th>Unit</th>
-<th>Mark</th>
-<th>Grade</th><!--
-<th>Points</th>
-<th>WPts</th>-->
-<th>Semester</th>
-<th>Session</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>ELEMENT OF SOCIOLOGY(DCMA101)</td>
-<td>3</td>
-<td>45</td>
-<td>D</td>
-<td>First</td>
-<td>2020/2021</td>
-</tr>
+                  <i class="mdi mdi-book-open-page-variant mdi-30px"></i>
+                  <span class="d-inline-block text-left">
+                  <small class="font-weight-light d-block"><?php echo $fecthLS["level"];?></small>
+                  <?php echo $semester_arr[$fecthLS["semester"]];?></span>
+                  </a>
+                  <?php }?>
+                  <?php $results= $pdo->query("SELECT * FROM `results` WHERE  `matno`='$student_matno'");?>
+                  <div class="table-responsive">
+                    <table id="order-listing" class="table" cellspacing="0" width="100%">
+                    <tr class="bg-primary text-white">
+                    <th>#</th>
+                    <th>Title/Code</th>
+                    <th>Unit</th>
+                    <th>Mark</th>
+                    <th>Grade</th><!--
+                    <th>Points</th>
+                    <th>WPts</th>-->
+                    <th>Semester</th>
+                    <th>Session</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <?php $unit = 0; $gp = 0;
+                      $idn = 1; while($resRow =$results->fetch()){
+                        $unit = ($unit + $resRow["unit"]);
+                        $gp = ($gp + $resRow["gp"]);
+                        ?>
+                    <tr>
+                    <td>1</td>
+                    <td><?php echo $resRow["title"];?>(<?php echo $resRow["code"];?>)</td>
+                    <td><?php echo $resRow["unit"];?></td>
+                    <td><?php echo $resRow["score"];?></td>
+                    <td><?php echo $resRow["grade"];?></td>
+                    <td><?php echo $semester_arr[$resRow["semester"]];?></td>
+                    <td><?php echo $resRow["session"];?></td>
+                    </tr>
+              <?php }?>
+                    </tbody>
+                    </table>
+              </div>
+                  <div class="table-responsive">
+                  <table id="order-listing" class="table table-bordered table-striped ">
+                      <tr class="bg-success text-white">
+                  <th>Total Unit</th>
+                  <th>GP</th>
+                  <th>GPA</th>
 
-</tbody>
-</table>
-</div>
-     <div class="table-responsive">
-<table id="order-listing" class="table table-bordered table-striped ">
-    <tr class="bg-success text-white">
-<th>Total Unit</th>
-<th>GP</th>
-<th>GPA</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <td><?php echo @$unit;?></td>
+                        <td><?php echo number_format(@$gp,2);?></td>
+                        <td><?php if($unit ==0){echo "0.00";} else{ echo number_format((@$gp/@$unit), 2);}?></td>
 
-</tr>
-</thead>
-<tbody>
-<td>50</td>
-			 <td>124.75</td>
-			 <td>2.50</td>
-
-</tbody>
-</table>
-</div>
+                  </tbody>
+                  </table>
+                  </div>
                   </div>
                 </div>
               </div>

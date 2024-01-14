@@ -62,15 +62,10 @@
                             <tr class="bg-primary text-white">
                               <th>SN</th>
                               <th>MAT No</th>
-                              <!-- <th>APP No</th> -->
-                              <!-- <th>UTME</th> -->
                               <th>NAMES</th>
                               <th>GENDER</th>
                               <th>STATE</th>
-                              <!-- <th>COLLEGE</th> -->
-                              <!-- <th>PROGRAMME</th> -->
                               <th>LEVEL</th>
-                              <!-- <th>DEPARTMENT</th> -->
                               <th>STATUS</th>
                               <th>ACTION</th>
                             </tr>
@@ -81,18 +76,13 @@
                             <tr>
                               <td><?php echo $ns;?></td>
                               <td><?php echo $strow["matno"];?></td>
-                              <!-- <td><?php //echo $strow["applicationno"];?></td> -->
-                              <!-- <td><?php //echo $strow["utme"];?></td> -->
                               <td><?php echo $strow["names"];?></td>
                               <td><?php echo $strow["sex"];?></td>
                               <td><?php echo $strow["states"];?></td>
-                              <!-- <td><?php //echo $strow["college_id"];?></td> -->
-                              <!-- <td><?php //echo $strow["programme"];?></td> -->
                               <td><?php echo $strow["level"];?></td>
-                              <!-- <td><?php //echo $strow["department"];?></td> -->
                               <td><?php echo $stat_arr[$strow["stat"]];?></td>
                               <td class="text-right">
-                                <a class="btn btn-light" href="students/index?matno=<?php echo encryptor('encrypt',$strow["matno"]);?>" target="_blank">
+                                <a class="btn btn-light" href="students/index?matno=<?php echo encryptor('encrypt',$strow["id"]);?>" target="_blank">
                                   <i class="mdi mdi-eye text-primary"></i> View </a>
                                 <!-- <button class="btn btn-light"><i class=" mdi mdi-close text-danger"></i> Remove </button> -->
                               </td>

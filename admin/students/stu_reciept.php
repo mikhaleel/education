@@ -1,10 +1,18 @@
+<?php //stpid
+ include("../../data/db.php");
+     $stpid = encryptor('decrypt',$_GET["stpid"]);
+     $fetchpay = $pdo->prepare("SELECT * FROM `stu_payloader` WHERE `id`=?");
+     $fetchpay->execute([$stpid]);
+     $payrow = $fetchpay->fetch();
+     $seme_ar=array(1=>"First Semester",2=>"Second Semester",3=>"Third Semester")
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Plus Admin</title>
+    <title>Payment reciept</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -19,107 +27,68 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Invoice </h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Sample pages</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Invoice</li>
-                </ol>
-              </nav>
+              <h5 class="page-title"> Invoice </h5>
             </div>
             <div class="row">
               <div class="col-lg-12">
                 <div class="card px-2">
                   <div class="card-body">
                     <div class="container-fluid">
-                      <h3 class="text-right my-5">Invoice&nbsp;&nbsp;#INV-17</h3>
+                      <h4 class="text-right my-5">Invoice&nbsp;&nbsp;#SCHF-<?php echo number_format($payrow["id"],3);?> </h4>
                       <hr>
                     </div>
                     <div class="container-fluid d-flex justify-content-between">
-                      <div class="col-lg-3 pl-0">
-                        <p class="mt-5 mb-2"><b>Plus Admin</b></p>
-                        <p>104,<br>Minare SK,<br>Canada, K1A 0G9.</p>
+                      <div class="col-lg-6 pl-0">
+                        <p class="mt-2 mb-2"><?php echo $payrow["pay_type"];?><b> [<?php echo $payrow["matno"];?>]</b>
+                        <br><?php echo $payrow["level"];?>  - <?php echo $payrow["programme"];?> 
+                        <br><?php echo $seme_ar[$payrow["semester"]];?> - <?php echo $payrow["session"];?>
+                      </p>
                       </div>
-                      <div class="col-lg-3 pr-0">
-                        <p class="mt-5 mb-2 text-right"><b>Invoice to</b></p>
-                        <p class="text-right">Gaala & Sons,<br> C-201, Beykoz-34800,<br> Canada, K1A 0G9.</p>
-                      </div>
-                    </div>
-                    <div class="container-fluid d-flex justify-content-between">
-                      <div class="col-lg-3 pl-0">
-                        <p class="mb-0 mt-5">Invoice Date : 23rd Jan 2016</p>
-                        <p>Due Date : 25th Jan 2017</p>
+                      <div class="col-lg-2 pl-0">
+                        <p class="mt-2 mb-2">Status: <b class="badge badge-outline-primary "> &nbsp;Paid &nbsp;</b>
+                      </p>
                       </div>
                     </div>
-                    <div class="container-fluid mt-5 d-flex justify-content-center w-100">
+                    
+                    <div class="container-fluid mt-2 d-flex justify-content-center w-100">
                       <div class="table-responsive w-100">
                         <table class="table">
                           <thead>
                             <tr class="bg-dark text-white">
                               <th>#</th>
                               <th>Description</th>
-                              <th class="text-right">Quantity</th>
-                              <th class="text-right">Unit cost</th>
-                              <th class="text-right">Total</th>
+                              <th class="text-right">Amount</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr class="text-right">
                               <td class="text-left">1</td>
-                              <td class="text-left">Brochure Design</td>
-                              <td>2</td>
-                              <td>$20</td>
-                              <td>$40</td>
+                              <td class="text-left"><?php echo $payrow["level"];?> - <?php echo $seme_ar[$payrow["semester"]];?> <?php echo $payrow["session"];?> <?php echo $payrow["type"];?></td>
+                              <td><?php echo $payrow["amount"];?></td>
                             </tr>
                             <tr class="text-right">
                               <td class="text-left">2</td>
-                              <td class="text-left">Web Design Packages(Template) - Basic</td>
-                              <td>05</td>
-                              <td>$25</td>
-                              <td>$125</td>
-                            </tr>
-                            <tr class="text-right">
-                              <td class="text-left">3</td>
-                              <td class="text-left">Print Ad - Basic - Color</td>
-                              <td>08</td>
-                              <td>$500</td>
-                              <td>$4000</td>
-                            </tr>
-                            <tr class="text-right">
-                              <td class="text-left">4</td>
-                              <td class="text-left">Down Coat</td>
-                              <td>1</td>
-                              <td>$5</td>
-                              <td>$5</td>
+                              <td class="text-left">Late Charges </td>
+                              <td><?php echo $payrow["lates"];?></td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
                     </div>
-                    <div class="container-fluid mt-5 w-100">
-                      <p class="text-right mb-2">Sub - Total amount: $12,348</p>
-                      <p class="text-right">vat (10%) : $138</p>
-                      <h4 class="text-right mb-5">Total : $13,986</h4>
+                    <div class="container-fluid mt-2 w-100">
+                      <p class="text-right mb-2">Total amount: N <?php echo ($payrow["amount"] + $payrow["lates"]);?></p>
+                      <p class="text-right">
+                        
+                      </p>
+                      <h4 class="text-right mb-5 mt-5 w-100">Bursar</h4>
                       <hr>
                     </div>
-                    <div class="container-fluid w-100">
-                      <a href="#" class="btn btn-primary float-right mt-4 ms-2"><i class="mdi mdi-printer me-1"></i>Print</a>
-                      <a href="#" class="btn btn-success float-right mt-4"><i class="mdi mdi-telegram me-1"></i>Send Invoice</a>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
           <!-- content-wrapper ends -->
-          <!-- partial:../../partials/_footer.html -->
-          <footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-            </div>
-          </footer>
-          <!-- partial -->
+       
         </div>
         <!-- main-panel ends -->
       </div>

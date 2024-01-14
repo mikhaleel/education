@@ -24,26 +24,45 @@
                     <div class="alert alert-success text-black"> 
                     Any issue on Payment, Kindly contact the following;<br>
                     Whatsapp : +234 8135711660 OR +234 7038691624<br>
-                    Email : payment@nigerpoly.edu.ng
+                    Email : payment@domainname.edu.ng
                     </div>
                     <ul class="list-group">
                     <?php
+                    if(isset($_GET['geninv']))
+                    {
+                      $category = encryptor('decrypt',$_GET['geninv']);
+                      $level = encryptor('decrypt',$_GET['level']);
+                      $semester = encryptor('decrypt',$_GET['semester']);
+                      $session = encryptor('decrypt',$_GET['session']);
+                      $col_id = $student_college_id;
+                      $fetc_fsch = $pdo->prepare("SELECT * FROM `payment_schedule` WHERE `session`=? AND `semester`=? AND `level` = ? AND `category`=?");
+                      $fetc_fsch->execute([$session, $semester,$level,$category]);
+                     $paym_row =  $fetc_fsch->fetch();
+                      $instpl = $pdo->prepare("INSERT INTO `stu_payloader` (`matno`, `programme`, `type`, `session`, `semester`, `level`, `pay_type`, `amount`,`college_id`) VALUES (?,?,?,?,?,?,?,?,?)");
+                      $instpl->execute([$student_matno,$student_programme,$category,$session,$semester,$level,$student_name,$paym_row["amount_indigene"],$col_id]);
+                      echo "<script>alert('Invoice generated, Click on Pay now from Payment/Reciept Menu to make payment')</script>";
+                      echo '<div class="alert alert-info">Invoice Generated!!</div><script>setTimeout(function(){location.href="payment?matno='.encryptor('encrypt',$student_id).'"},1000)</script>';
+
+                    }
+
                       if($stu_p->rowCount() > 0)
                       {}
-                      else{?>
-                        <a href="#" class="btn btn-warning float-right">Generate School Fee Payment Invoice for DIP2 2022/2023 First Semester</a>
-                     <?php  }?>
+                      else
+                      {?>
+                        <a href="?matno=<?php echo encryptor('encrypt',$student_id);?>&geninv=<?php echo encryptor('encrypt','School Fees');?>&session=<?php echo encryptor('encrypt',$school_activesession);?>&semester=<?php echo encryptor('encrypt',$school_activesemester);?>&level=<?php echo encryptor('encrypt',$student_level);?>" class="btn btn-warning float-right">Generate School Fee Payment Invoice for <?php echo $student_level;?> <?php echo $school_activesession;?> <?php echo $semester_arr[$school_activesemester];?></a>
+                        <?php  
+                      }?>
                     <?php          
                     //fetch all payments
                     $stu_pay = $pdo->query("SELECT * FROM `stu_payloader` WHERE `matno`='$student_matno'");
                     while($pay_row = $stu_pay->fetch())
                     {?>
                       <li class="list-group-item"><strong class="text-primary"><?php echo $pay_row["level"];?> <?php echo $semester_arr[$pay_row['semester']];?> </strong> : [School Fees] - <?php echo $pay_row["session"];?></strong>  
-                      <strong class="text-success"> &#8358;21,200</strong> 
+                      <strong class="text-success"> &#8358;<?php echo $pay_row["amount"];?></strong> 
                       <?php 
                       if($pay_row['status']=="paid")
                       {?>
-                        <a href="stu_reciept" class="btn btn-success pull-right" target="_blank" >View Receipt</a>
+                        <a href="stu_reciept?stpid=<?php echo encryptor('encrypt',$pay_row["id"]);?>" class="btn btn-success pull-right" target="_blank" >View Receipt</a>
                       <?php 
                       }else
                       {?>
@@ -56,7 +75,7 @@
                     };?>
                     </ul>
                       <div class="blockquote blockquote-primary alert-dismissible fade show" role="alert"><i class="zmdi zmdi-natification"></i>
-                      <h5><b> NOTICE! </b><br><hr>This is to inform all students that second semester 2021/2022 student registration ends as follows:<br><br>
+                      <h5><b> NOTICE! </b><br><hr>This is to inform all students that the 2021/2022 Academic session student registration ends as follows:<br><br>
                       <ol><li>	Student Late Registration
                       Date: Friday, 25th November, 2022
                       Time:</li><br>

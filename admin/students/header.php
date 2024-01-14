@@ -49,8 +49,9 @@ $stschl = $schl->fetch();
 $student_school = $stschl["school"];
 //fetch  payments by session and semester
 $stu_pay = $pdo->query("SELECT * FROM `stu_payloader` WHERE `matno`='$student_matno' AND `session` = '$school_activesession' AND `semester` = '$school_activesemester' AND `status` = 'paid'");
-$stu_p = $pdo->query("SELECT * FROM `stu_payloader` WHERE `matno`='$student_matno' AND `session` = '$school_activesession' AND `semester` = '$school_activesemester' AND `status` = 'paid'");
-$pay_row = $stu_pay->fetch();
+$pay_rw = $stu_pay->fetch();
+
+$stu_p = $pdo->query("SELECT * FROM `stu_payloader` WHERE `matno`='$student_matno' AND `session` = '$school_activesession' AND `semester` = '$school_activesemester'");
 //fatch  courses reg by session and semmester
 $stu_course_reg = $pdo->query("SELECT * FROM `stu_course_reg` WHERE `matno`='$student_matno' AND `session` = '$school_activesession' AND `semester` = '$school_activesemester'");
 $course_reg_row = $stu_course_reg->fetch();
@@ -84,27 +85,6 @@ $course_reg_row = $stu_course_reg->fetch();
   <?php include "sidebar.php"?>
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_settings-panel.html -->
-        <div id="settings-trigger"><i class="mdi mdi-settings"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close mdi mdi-close"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-default-theme">
-            <div class="img-ss rounded-circle bg-light border me-3"></div>Default
-          </div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme">
-            <div class="img-ss rounded-circle bg-dark border me-3"></div>Dark
-          </div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles default primary"></div>
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles light"></div>
-          </div>
-        </div>
         <!-- partial -->
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -112,54 +92,9 @@ $course_reg_row = $stu_course_reg->fetch();
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
               <span class="mdi mdi-chevron-double-left"></span>
             </button>
-            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-              <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="https://demo.bootstrapdash.com/plus/jquery/template/assets/images/logo-mini.svg" alt="logo" /></a>
-            </div>
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="mdi mdi-email-outline"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-left navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                  <h6 class="p-3 mb-0 font-weight-semibold">Messages</h6>
-                  <div class="dropdown-divider"></div>
-                 
-                  <h6 class="p-3 mb-0 text-center text-primary font-13">0 messages</h6>
-                </div>
-              </li>
-              <li class="nav-item dropdown ms-3">
-                <a class="nav-link" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-                  <i class="mdi mdi-bell-outline"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-left navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                  <h6 class="px-3 py-3 font-weight-semibold mb-0">Notifications</h6>
-                  <div class="dropdown-divider"></div>
-                  
-                  <h6 class="p-3 font-13 mb-0 text-primary text-center">View notifications</h6>
-                </div>
-              </li>
-            </ul>
             <ul class="navbar-nav navbar-nav-right">
-              <li class="nav-item nav-profile dropdown d-none d-md-block">
-                <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                  <div class="nav-profile-text">English </div>
-                </a>
-                <div class="dropdown-menu center navbar-dropdown" aria-labelledby="profileDropdown">
-                  <a class="dropdown-item" href="#">
-                    <i class="flag-icon flag-icon-bl me-3"></i> French </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">
-                    <i class="flag-icon flag-icon-cn me-3"></i> Chinese </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">
-                    <i class="flag-icon flag-icon-de me-3"></i> German </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">
-                    <i class="flag-icon flag-icon-ru me-3"></i>Russian </a>
-                </div>
-              </li>
               <li class="nav-item nav-logout d-none d-lg-block">
-                <a class="nav-link" href="../index.php">
+                <a class="nav-link" href="?logout">
                   <i class="mdi mdi-power"></i>Logout
                 </a>
               </li>

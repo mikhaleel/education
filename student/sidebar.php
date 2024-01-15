@@ -5,8 +5,9 @@
           <li class="nav-item nav-profile border-bottom">
             <a href="#" class="nav-link flex-column">
               <div class="nav-profile-image">
-                <img src="assets/images/faces/face1.jpg" alt="profile">
+               <?php echo '<img src="'.$stu_passport.'" alt="profile">';?>
                 <!--change to offline or busy as needed-->
+                <!-- <img src="uploads/NDCS_022_012_PrimaryCertificate.png"> -->
               </div>
               <div class="nav-profile-text d-flex ms-0 mb-3 flex-column">
                 <span class="font-weight-semibold mb-1 mt-2 text-center"><?php echo $student_name;?></span>
@@ -14,11 +15,13 @@
               </div>
             </a>
           </li>
-          <!-- <li class="nav-item pt-3">
-            <a class="nav-link d-block" href="index"> <div class="small font-weight-light pt-1">Welcome Back! </div>
+          <li class="nav-item pt-3">
+            <a class="nav-link d-block" href="index">
+              <img class="sidebar-brand-logo" src="https://demo.bootstrapdash.com/plus/jquery/template/assets/images/logo.svg" alt="">
+              <img class="sidebar-brand-logomini" src="https://demo.bootstrapdash.com/plus/jquery/template/assets/images/logo-mini.svg" alt="">
+              <div class="small font-weight-light pt-1">Welcome Back! </div>
             </a>
-           
-          </li> -->
+          </li>
           <li class="pt-2 pb-1">
             <span class="nav-item-head text-danger">Dashboard</span>
           </li>

@@ -61,6 +61,11 @@ $stu_p = $pdo->query("SELECT * FROM `stu_payloader` WHERE `matno`='$student_matn
 //fatch  courses reg by session and semmester
 $stu_course_reg = $pdo->query("SELECT * FROM `stu_course_reg` WHERE `matno`='$student_matno' AND `session` = '$school_activesession' AND `semester` = '$school_activesemester'");
 $course_reg_row = $stu_course_reg->fetch();
+
+
+$stu_passpt = $pdo->query("SELECT `file` FROM `stu_files` WHERE `matno`='$student_matno' AND `certificate` = 'Passport'");
+$file_ppt = $stu_passpt->fetch();
+$stu_passport = $file_ppt["file"];
 ?>
 <!DOCTYPE html>
 <html lang="en">

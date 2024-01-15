@@ -71,7 +71,12 @@
 
                       $instfile = $pdo->prepare("INSERT INTO `stu_files`(`matno`, `certificate`, `file`) VALUES (?,?,?)");
                       $instfile->execute([$student_matno, $certs,$sfile_name]);
-                      if($instfile) { echo '<div class="alert alert-info"><b>RECORD INSERTED!!</div>';}
+                      if($instfile) { 
+                        
+				               echo '<div class="alert alert-success outline alert-dismissible fade show" role="alert"><i data-feather="thumbs-up"></i><b>Wait,</b> Uploading/Inserting file data....</div><script>setTimeout(function(){location.href="?matno='.encryptor('encrypt',$student_id).'"},1000)</script>';
+                        
+                        //echo '<div class="alert alert-info"><b>RECORD INSERTED!!</div>';
+                      }
                     }
                     ?>
                     <center><button class="btn btn-primary pull-center" data-bs-toggle="modal" data-bs-target="#exampleModal-4"><b>Upload New File</b> <i class=" mdi mdi-plus "></i></button></center>
@@ -99,9 +104,32 @@
                               <td><?php echo $file_row["certificate"];?></td>
                               <!-- <td><a href="">View fil</a></td> -->
                               <td class="text-right">
-                                <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#EditModal">
+                                <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#EditModal<?php echo $n;?>">
                                   <i class="mdi mdi-eye text-primary"></i> View </button>
                                 <a class="btn btn-light" href="files?matno=<?php echo encryptor('encrypt',$student_id);?>&fids=<?php echo encryptor('encrypt',$file_row["id"]);?>&tfl=<?php echo encryptor('encrypt',$file_row["file"]);?>"><i class=" mdi mdi-check-all text-danger"></i> Delete </a>
+
+                                <!--Edit Courses Start-->
+                                <div class="modal fade" id="EditModal<?php echo $n;?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="ModalLabel">File</h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <img src="<?php echo $file_row["file"];?>" >
+                                      </div>
+                                      <div class="modal-footer">
+                                        <!-- <button type="submit" class="btn btn-success">Submit</button> -->
+                                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!--Edit Courses End-->
+
                               </td>
                             </tr>
                             <?php
@@ -115,46 +143,6 @@
               </div>
             </div>
           </div>
-          <!--Edit Courses Start-->
-                    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel">Edit File</h5>
-                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form>
-                                <div class="row">
-                                <div class="col-12">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Document Type:</label>
-                                <select type="text" name="college" class="form-control">
-                                    <option>Choose</option>
-                                </select>
-                              </div>
-                              </div>
-                              <div class="col-12">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">File:</label>
-                                <input type="file" name="title" class="form-control">
-                              </div>
-                              </div>
-                                </div>
-                             
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-          <!--Edit Courses End-->
-                
          <!--Add Courses Start-->
                     <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">

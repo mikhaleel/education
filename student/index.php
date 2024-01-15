@@ -16,7 +16,7 @@
                 </div>
               </div>
             </div>
-            <!-- doughnut chart row starts -->
+            <!-- doughnut chart row starts   uploads/NDCS_022_012_PrimaryCertificate.png-->
             <div class="row">
               <div class="col-sm-12 stretch-card grid-margin">
                 <div class="card">
@@ -24,8 +24,8 @@
             <div class="col-md-5 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title"> <i class="mdi mdi-account  menu-icon"></i> Profile</h4>
-                 <center> <img src="profile_image.jpg" width="80px" height="80px" class="img-lg rounded-circle mb-2" alt="profile image"/>
+                  <h4 class="card-title"> <i class="mdi mdi-account  menu-icon"></i> Profile</h4> 
+                 <center> <img src="<?php echo $stu_passport;?>" width="80px" height="80px" class="img-lg rounded-circle mb-2" alt="profile image"/>
                  <h3 class="mt-2 text-success font-weight-bold"><?php echo $student_name;?></h3>
                  <h5><?php echo $student_matno;?></h5>
                  <p><strong>Gender :</strong> <?php echo $student_sex;?></p>

@@ -55,8 +55,8 @@ if(isset($_GET["logout"]))
           </li>
           <li class="nav-item pt-3">
             <a class="nav-link d-block" href="index">
-              <img class="sidebar-brand-logo" src="https://demo.bootstrapdash.com/plus/jquery/template/assets/images/logo.svg" alt="">
-              <img class="sidebar-brand-logomini" src="https://demo.bootstrapdash.com/plus/jquery/template/assets/images/logo-mini.svg" alt="">
+              <img class="sidebar-brand-logo" src="../schoologo.png" style="width: 50px; height: 50px;" alt="">
+              <img class="sidebar-brand-logomini" src="../schoologo.png" style="width: 50px; height: 50px;" alt="">
               <div class="small font-weight-light pt-1">Welcome Back! </div>
             </a>
           </li>

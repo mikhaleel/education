@@ -21,9 +21,13 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
-                  <?php $resultsls= $pdo->query("SELECT `level`, `semester`, `matno` FROM `results` WHERE  `matno`='$student_matno' GROUP BY `level`, `semester`");?>
+
+                  <?php 
+                  if($school_results==1){
+                  $resultsls= $pdo->query("SELECT `level`, `semester`, `matno` FROM `results` WHERE  `matno`='$student_matno' GROUP BY `level`, `semester`");?>
                   <?php while($fecthLS = $resultsls->fetch()){?>
-                  <a href="javascript:void(0);" NAME="Error Handling"  title="ZeroDivisionError handling" class="btn btn-outline-primary btn-icon-text">
+                    <a class="btn btn-outline-primary btn-icon-text" href="javascript:void(0);" NAME="Error Handling"title="ZeroDivisionError handling" onClick=window.open("result_page?matno=<?php echo encryptor('encrypt',$fecthLS["matno"]);?>&level=<?php echo encryptor('encrypt',$fecthLS["level"]);?>&semester=<?php echo encryptor('encrypt',$fecthLS["semester"]);?>","Ratting","width=850,height=670,left=150,top=200,toolbar=0,status=0,");>
+
                   <i class="mdi mdi-book-open-page-variant mdi-30px"></i>
                   <span class="d-inline-block text-left">
                   <small class="font-weight-light d-block"><?php echo $fecthLS["level"];?></small>
@@ -60,27 +64,30 @@
                     <td><?php echo $semester_arr[$resRow["semester"]];?></td>
                     <td><?php echo $resRow["session"];?></td>
                     </tr>
-              <?php }?>
+                    <?php }?>
                     </tbody>
                     </table>
-              </div>
+                  </div>
                   <div class="table-responsive">
                   <table id="order-listing" class="table table-bordered table-striped ">
-                      <tr class="bg-success text-white">
+                  <tr class="bg-success text-white">
                   <th>Total Unit</th>
                   <th>GP</th>
                   <th>GPA</th>
-
                   </tr>
                   </thead>
                   <tbody>
                   <td><?php echo @$unit;?></td>
-                        <td><?php echo number_format(@$gp,2);?></td>
-                        <td><?php if($unit ==0){echo "0.00";} else{ echo number_format((@$gp/@$unit), 2);}?></td>
-
+                  <td><?php echo number_format(@$gp,2);?></td>
+                  <td><?php if($unit ==0){echo "0.00";} else{ echo number_format((@$gp/@$unit), 2);}?></td>
                   </tbody>
                   </table>
                   </div>
+                  <?php 
+                }
+                else{?>
+Result page page is susspended at the moment
+                <?php }?>
                   </div>
                 </div>
               </div>

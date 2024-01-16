@@ -41,6 +41,12 @@ if(isset($_GET["matno"]))
               <div class="col-lg-12">
                 <div class="card px-2">
                   <div class="card-body">
+                    <div class="text-right my-3" style="text-align:center">
+                    <img src="../schoologo.png" style="width: 70px; height: 70px;">
+                    <br>
+                    <b><?php echo strtoupper($school_names);?></b>
+                        <?php echo strtoupper($school_address);?>.
+                    </div>
                     <div class="container-fluid">
                       <h3 class="text-right my-2">Course Form</h3>
                       <hr>
@@ -88,9 +94,15 @@ if(isset($_GET["matno"]))
                     
                   </div>
 
-<!-- Exam card start here  -->
+                  <!-- Exam card start here  -->
                    <p style="page-break-after: always;">&nbsp;</p>
                     <div class="card-body">
+                    <div class="text-right my-3" style="text-align:center">
+                    <img src="../schoologo.png" style="width: 70px; height: 70px;">
+                    <br>
+                    <b><?php echo strtoupper($school_names);?></b>
+                        <?php echo strtoupper($school_address);?>.
+                    </div>
                     <div class="container-fluid">
                       <h3 class="text-right my-2">Exam Card</h3>
                       <hr>
@@ -98,36 +110,42 @@ if(isset($_GET["matno"]))
                     <div class="container-fluid d-flex justify-content-between">
                       <div class="col-lg-6 pl-0">
                         <p class="mt-2 mb-2"><b> Name: <?php echo $names;?>  </b></p>
-                        <p>Matric No: <?php echo $matno;?>,<br> Level: <?php echo $level;?>,<br> Session: <?php echo $session;?>.</p>
+                        <p>Matric No: <?php echo $matno;?>,<br> </p>
                       </div>
                       <div class="col-lg-6 pr-0">
                         <p class="mt-2 mb-2 text-right"><b><?php echo $programme;?></b></p>
-                        <!-- <p class="text-right">Gaala & Sons,<br> C-201, Beykoz-34800,<br> Canada, K1A 0G9.</p> -->
+                        <p class="text-right">Level: <?php echo $level;?>,<br> Session: <?php echo $session;?>.</p>
                       </div>
                     </div>
+                    <div class="alert alert-success" role="alert"><b>Regulation / Instruction</b>
+                    <ul>
+                      <li>You are expected to goto the exam hall with this slip, </li>
+                      <li>Make sure you are in the exam hall atleast 10 mumits before the commencement of exam</li>
+                      <li> Do not go into the exam hall with any foreing material.</li>
+                    </ul> </div>
                     <div class="container-fluid mt-2 d-flex justify-content-center w-100">
-                      <div class="table-responsive w-100">
-                        <table class="table">
-                          <thead>
-                            <tr class="bg-dark text-white">
-                              <th>#</th>
-                              <th>Course Code</th>
-                              <th class="text-right">Course Title</th>
-                              <th class="text-right">Course Unit</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php $nr=0; while($rowcrr = $fetchcourseR->fetch()){ $nr++;?>
-                            <tr class="text-right">
-                              <td class="text-left"><?php echo $nr;?></td>
-                              <td class="text-left"><?php echo $rowcrr["coursecode"];?></td>
-                              <td><?php echo $rowcrr["coursetitle"];?></td>
-                              <td><?php echo $rowcrr["courseunit"];?></td>
-                            </tr>
-                            <?php }?>
-                          </tbody>
-                        </table>
-                      </div>
+                        <div class="table-responsive w-100">
+                          <table class="table">
+                            <thead>
+                              <tr class="bg-dark text-white">
+                                <th>#</th>
+                                <th>Course Code</th>
+                                <th class="text-right">Course Title</th>
+                                <th class="text-right">Course Unit</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php $nr=0; while($rowcrr = $fetchcourseR->fetch()){ $nr++;?>
+                              <tr class="text-right">
+                                <td style="font: size 7px;"><?php echo $nr;?></td>
+                                <td style="font: size 7px;"><?php echo $rowcrr["coursecode"];?></td>
+                                <td style="font: size 7px;"><?php echo $rowcrr["coursetitle"];?></td>
+                                <td style="font: size 7px;"><?php echo $rowcrr["courseunit"];?></td>
+                              </tr>
+                              <?php }?>
+                            </tbody>
+                          </table>
+                        </div>
                     </div>
                     <div class="container-fluid mt-2 w-100">
                       <p class="text-right mb-2">&nbsp;</p>

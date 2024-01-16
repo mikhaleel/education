@@ -17,13 +17,16 @@
           </li>
           <li class="nav-item pt-3">
             <a class="nav-link d-block" href="index">
-              <img class="sidebar-brand-logo" src="https://demo.bootstrapdash.com/plus/jquery/template/assets/images/logo.svg" alt="">
-              <img class="sidebar-brand-logomini" src="https://demo.bootstrapdash.com/plus/jquery/template/assets/images/logo-mini.svg" alt="">
+              <img class="sidebar-brand-logo" src="../schoologo.png" style="width: 50px; height: 50px;" alt="">
+              <img class="sidebar-brand-logomini" src="../schoologo.png" style="width: 50px; height: 50px;" alt="">
               <div class="small font-weight-light pt-1">Welcome Back! </div>
             </a>
           </li>
-          <li class="pt-2 pb-1">
-            <span class="nav-item-head text-danger">Dashboard</span>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <i class="mdi mdi-compass-outline menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="index?matno=<?php echo encryptor('encrypt',$student_id);?>">
@@ -56,7 +59,7 @@
             </a>
           </li>
           <!-- <li class="nav-item">
-            <a class="nav-link" href="accommodation?matno=<?php echo encryptor('encrypt',$student_id);?>">
+            <a class="nav-link" href="accommodation?matno=<?php //echo encryptor('encrypt',$student_id);?>">
               <i class="mdi mdi-hospital-building menu-icon"></i>
               <span class="menu-title">Accommodation</span>
             </a>

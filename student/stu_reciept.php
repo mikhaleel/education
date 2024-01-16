@@ -25,9 +25,12 @@
       <div class="container-fluid page-body-wrapper">
         <div class="main-panel">
           <div class="content-wrapper">
-            <div class="page-header">
-              <h5 class="page-title"> Invoice </h5>
-            </div>
+              <span class="text-right my-3" style="text-align:center">
+              <img src="../schoologo.png" style="width: 70px; height: 70px;">
+              <br>
+              <b><?php echo strtoupper($school_names);?></b>
+                  <?php echo strtoupper($school_address);?>.
+              </span>
             <div class="row">
               <div class="col-lg-12">
                 <div class="card px-2">
@@ -109,6 +112,4 @@
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
   </body>
-
-<!-- Mirrored from demo.bootstrapdash.com/plus/jquery/template/demo_1/pages/samples/invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Nov 2023 12:18:25 GMT -->
 </html>

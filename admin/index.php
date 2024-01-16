@@ -1,4 +1,7 @@
-<?php include "header.php"?>
+<?php include "header.php";
+
+?>
+
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper pb-0">
@@ -77,11 +80,11 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-8 grid-margin stretch-card">
+              <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Inline datepicker</h4>
-                    <p class="card-description">An inline datepicker</p>
+                    <h4 class="card-title">Calendar</h4>
+                    <!-- <p class="card-description">Calendar</p> -->
                     <div id="inline-datepicker" class="datepicker"></div>
                   </div>
                 </div>

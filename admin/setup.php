@@ -109,13 +109,36 @@
                   <button name="fupload" type="Submit" class="btn btn-primary">Upload School Logo</button>
                 </form>
                 </div>
+<!-- result system config -->
+              <form name="fileform" action="" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                  <div class="col-sm-6 col-md-6">
+                    <div class="mb-3">
+                      <label class="form-label">Active Session</label>
+                      <input class="form-control" name="session" id="session" required value="<?php echo $the_config["sessions"];?>">
+                                      
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-6">
+                    <div class="mb-3">
+                      <label class="form-label">Active Semester</label>
+                      <input class="form-control" name="semester" id="semester" value="<?php echo $the_config["semester"];?>" required>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="card-footer text-end">
+                    <button class="btn btn-primary" name="configur" type="submit">Save</button><br><br>
+                      <p align="left"><a href="" class="btn btn-danger">Promote Students</a></p>
+                  </div>
+              </form>
+<!-- end of result system config -->
               </div>
             </div>
             <div class="col-md-7 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
+                  <!-- main system config -->
                   <h4 class="card-title">Config</h4>
-                  
                 <form name="fileform" action="" method="POST" enctype="multipart/form-data">
                       <div class="row">
                         <div class="col-md-12">
@@ -244,7 +267,8 @@
                       <button class="btn btn-primary" name="configur" type="submit">Save</button><br><br>
                         <p align="left"><a href="" class="btn btn-danger">Promote Students</a></p>
                         </div>
-                  </form>
+                </form>
+                <!-- End of main system config -->
                 </div>
               </div>
             </div>

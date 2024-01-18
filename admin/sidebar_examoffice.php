@@ -21,7 +21,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="exam">
+            <a class="nav-link" href="../rms" target="_blank">
               <i class="mdi mdi-television-guide menu-icon"></i>
               <span class="menu-title">Exam Portal</span>
             </a>
@@ -44,7 +44,7 @@
            
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../index.php">
+            <a class="nav-link" href="?logout">
               <i class="mdi mdi-power  menu-icon"></i>
               <span class="menu-title">Logout</span>
             </a>

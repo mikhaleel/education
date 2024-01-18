@@ -3,7 +3,7 @@
      $fetchpay = $pdo->prepare("SELECT * FROM `stu_payloader` WHERE `id`=?");
      $fetchpay->execute([$stpid]);
      $payrow = $fetchpay->fetch();
-     $seme_ar=array(1=>"First Semester",2=>"Second Semester",3=>"Third Semester")
+     $seme_ar= $semester_arr;
  ?>
 <!DOCTYPE html>
 <html lang="en">

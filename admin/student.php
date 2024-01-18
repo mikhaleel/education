@@ -4,7 +4,7 @@
           <div class="content-wrapper">
           <div class="page-header flex-wrap">
               <div class="header-left">
-              <h3 class="page-title"> Students Page </h3>
+              <h3 class="page-title"> Students </h3>
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
@@ -29,11 +29,11 @@
                             <input type="text" class="form-control" placeholder="Matno | Name | Email | Phone number" name="searchval" >
                                 </div>
                                 <div class="col-5">
-                            <select type="text" class="form-control" placeholder="Search Here" name="status">
-                                <option>Select</option>
-                                <option value="1" >Active</option>
-                                <option value="0" >Inactive</option>
-                            </select>
+                                  <select type="text" class="form-control" placeholder="Search Here" name="status">
+                                      <option>Select</option>
+                                      <option value="1" >Active</option>
+                                      <option value="0" >Inactive</option>
+                                  </select>
                                 </div>
                             <button type="submit" name="submit" class="btn btn-primary border ms-3">Search</button>
                           </div>
@@ -44,14 +44,35 @@
                       $stat_arr = array(1=>"Active", 0=>"InActive");
                       if(isset($_POST["submit"]))
                       {
-                        $searchval = "%".$_POST["searchval"]."%"; 
-                        $studentsn = $pdo->prepare("SELECT * FROM `students` WHERE (`programme` LIKE ? OR `matno` LIKE ? OR `names` LIKE ? OR `email` LIKE ? OR `contact` LIKE ?) AND `stat` = ? ");
-                        $studentsn->execute([$searchval,$searchval,$searchval,$searchval,$searchval, $_POST["status"]]);
+                        if($_SESSION["usertype"] == 5)
+                        {
+                          $department = "%".$_SESSION["department"]."%";
+                        //  $department = "%".'BUSINESS'."%";
+                          $searchval = "%".$_POST["searchval"]."%"; 
+                          $studentsn = $pdo->prepare("SELECT * FROM `students` WHERE (`programme` LIKE ? OR `matno` LIKE ? OR `names` LIKE ? OR `email` LIKE ? OR `contact` LIKE ?) AND `stat` = ? AND `programme` LIKE ?");
+                          $studentsn->execute([$searchval,$searchval,$searchval,$searchval,$searchval, $_POST["status"], $department]);
+                        }
+                        else
+                        {
+                          $searchval = "%".$_POST["searchval"]."%";
+                          $studentsn = $pdo->prepare("SELECT * FROM `students` WHERE (`programme` LIKE ? OR `matno` LIKE ? OR `names` LIKE ? OR `email` LIKE ? OR `contact` LIKE ?) AND `stat` = ? ");
+                          $studentsn->execute([$searchval,$searchval,$searchval,$searchval,$searchval, $_POST["status"]]);
+                        }
                       }
                       else
                       {
-                        $studentsn = $pdo->prepare("SELECT * FROM `students`");
-                        $studentsn->execute();
+                        if($_SESSION["usertype"] == 5)
+                        {
+                          $department = "%".$_SESSION["department"]."%";
+                         // $department = "%".'BUSINESS'."%";
+                          $studentsn = $pdo->prepare("SELECT * FROM `students` WHERE `programme` LIKE ?");
+                          $studentsn->execute([$department]);
+                        }
+                        else
+                        {
+                          $studentsn = $pdo->prepare("SELECT * FROM `students`");
+                          $studentsn->execute();
+                        }
                       }
                       ?>
                     <h4 class="card-title">List</h4>
@@ -97,4 +118,4 @@
               </div>
             </div>
           </div>
-         <?php include "footer.php"?>
+         <?php include("footer.php");?>

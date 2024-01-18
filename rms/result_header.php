@@ -81,6 +81,9 @@ function get_department($pdo, $id)
     return $depts["names"];
 }
 
+$config = $pdo->query("SELECT * FROM `config`");
+$config_row = $config->fetch();
+
 $dept_d = $pdo->query("SELECT * FROM `departments` WHERE `names` = '$department'");
 $dept_row = $dept_d->fetch();
 $_SESSION['dept_id'] = @$dept_row['dept_id'];
@@ -104,7 +107,7 @@ while($session_details = $session_data->fetch())
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>NIGER STATE POLYTECHNIC</title>
+    <title>Result Portal</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -122,7 +125,7 @@ while($session_details = $session_data->fetch())
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/demo_3/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="logos.png" />
+    <link rel="shortcut icon" href="../schoologo.png" />
     
    
  <script type="text/javascript">
@@ -182,8 +185,8 @@ while($session_details = $session_data->fetch())
           <div class="container">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
               <a class="navbar-brand brand-logo" href="index">
-                <img src="logoh.png" alt="logo" />
-                <span class="font-12 d-block font-weight-light">Niger State Polytechnic </span>
+                <img src="../schoologo.png" alt="logo" />
+                <span class="font-12 d-block font-weight-light"><?php echo $config_row["school"];?> </span>
               </a>
               <a class="navbar-brand brand-logo-mini" href="index"><img src="logos.png" alt="logo" /></a>
             </div>

@@ -36,79 +36,20 @@ else
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  
-<head>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><?php echo $stu_infor["names"];?> Students - Invoice</title>
+    <title>Payment reciept</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../../applicant/assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../applicant/assets/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../../applicant/assets/vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="../../applicant/assets/vendors/typicons/typicons.css">
-    <link rel="stylesheet" href="../../applicant/assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End Plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="../../applicant/assets/css/shared/style.css">
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="../../applicant/assets/css/demo_11/style.css">
-    <!-- End Layout styles -->
-    <link rel="shortcut icon" href="../../applicant/assets/images/favicon.png" />
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/css/demo_1/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../schoologo.png" />
   </head>
-  <body class="invoice-page">
-    <div class="container-scroller">
-      <!-- partial:../../partials/_horizontal-navbar.html -->
-      <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
-        <div class="container d-flex flex-row nav-top">
-          <div class="text-center navbar-brand-wrapper d-flex align-items-top">
-            <a class="navbar-brand brand-logo" href="index">
-              <img src="https://demo.bootstrapdash.com/star-admin-pro/src/assets/images/logo_2.svg" alt="logo" /> </a>
-            <a class="navbar-brand brand-logo-mini" href="index">
-              <img src="https://demo.bootstrapdash.com/star-admin-pro/src/assets/images/logo-mini.svg" alt="logo" /> </a>
-          </div>
-          <div class="navbar-menu-wrapper d-flex align-items-center">
-            <form action="https://demo.bootstrapdash.com/star-admin-pro/src/demo_11/pages/samples/form-action" class="d-none d-sm-block">
-              <div class="input-group search-box">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="mdi mdi mdi-magnify"></i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" placeholder="Type to search…">
-                <i class="mdi mdi mdi-close search-close"></i>
-              </div>
-            </form>
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item dropdown">
-              </li>
-              <li class="nav-item dropdown ms-4">
-               
-              </li>
-              <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
-                <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                  <div class="wrapper d-flex flex-column">
-                    <span class="profile-text"><?php echo $stu_infor["names"];?></span>
-                    <span class="user-designation">Students</span>
-                  </div>
-                  <div class="display-avatar bg-inverse-primary text-primary">AS</div>
-                </a>
-              </li>
-            </ul>
-            <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize">
-              <span class="mdi mdi-menu"></span>
-            </button>
-          </div>
-        </div>
-       
-      </nav>
-      <!-- partial -->
-      <!-- partial:../../partials/_settings-panel.html -->
-
-      <!-- partial -->
+  <body>
       <div class="container-fluid page-body-wrapper">
         <div class="main-panel container">
           <div class="content-wrapper">
@@ -116,6 +57,12 @@ else
               <div class="col-lg-12">
                 <div class="card px-2">
                   <div class="card-body">
+                    <div class="text-right my-3" style="text-align:center">
+                    <img src="../schoologo.png" style="width: 70px; height: 70px;">
+                    <br>
+                    <b><?php echo strtoupper($school_names);?></b>
+                        <?php echo strtoupper($school_address);?>.
+                    </div>
                     <div class="container-fluid">
                       <h5 class="text-right my-3">Invoice&nbsp;&nbsp;#INV-<?php echo date("mdy");?></h5>
                       <hr>
@@ -295,20 +242,16 @@ else
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../../applicant/assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
-    <!-- inject:js-->
-    <script src="../../applicant/assets/js/shared/off-canvas.js"></script>
-    <script src="../../applicant/assets/js/shared/hoverable-collapse.js"></script>
-    <script src="../../applicant/assets/js/shared/misc.js"></script>
-    <script src="../../applicant/assets/js/shared/settings.js"></script>
-    <script src="../../applicant/assets/js/shared/todolist.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="../../applicant/assets/js/demo_11/script.js"></script>
-    <!-- End custom js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
   </body>
 
 </html>
@@ -318,41 +261,3 @@ else
 <script src="https://checkout.squadco.com/widget/squad.min.js"></script> 
 <script src="https://checkout.flutterwave.com/v3.js"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
-<script>
-function payWithPaystack(){
-var txid = document.getElementById('txid').value;
-//var amt = document.getElementById('amt').value;
-//alert(txid);
-var handler = PaystackPop.setup({
-key: 'pk_adc67ef84cf7e809b8326d1e12898452072c239d',
-email: document.getElementById('email').value,
-amount: document.getElementById('amount').value,
-currency: "NGN",
-ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-metadata: {
- custom_fields: [
-    {
-       display_name: document.getElementById('names').value,
-        variable_name: document.getElementById('desc').value,
-        value: document.getElementById('txid').value
-    }
- ]
-},
-callback: function(response){
-//  alert('success. transaction ref is ' + response.reference);
-//  swal("Success!", "Transaction successful", "success");
-window.location.href="app_transaction_verify?txid="+txid+"&ref="+response.reference;
-},
-onClose: function(){
- //alert(order);
-    swal("Canelled!", "Transaction cancel", "error");
-    //window.location.href="paymentconfirm?orderid="+order;
-          //window.location.href="paymentconfirm?orderid="+order+"&ref=78754&amt="+amt;
-}
-});
-handler.openIframe();
-}
-</script>
-<script>
-    document.addEventListener('contextmenu', event => event.preventDefault());
-</script>

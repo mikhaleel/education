@@ -36,25 +36,25 @@ if(
 			  if($trows["designation"] == 'EO' OR $trows["designation"] == 'EXAMINATION OFFICER' OR $trows["designation"] == 'APO'){
 				$_SESSION['eo'] = $trows["designation"];
 				}
- //   echo '<script>alert("'.$trows["department"].'")</script>';
-				$_SESSION["username"] = $trows["username"];
-				$_SESSION["gsm"] = $trows["gsm"];
-				$_SESSION["deptname"] = @$dpt_ids["names"];
-				$_SESSION["password"] = $trows["password"];
-				$_SESSION["names"] = $trows["names"];
-				$_SESSION["designation"] = $trows["designation"];
-				$_SESSION["school"] = $trows["school"];
-				$_SESSION["dept_id"] = @$dpt_ids["dept_id"];//$trows["department"];
-				$_SESSION["department"] =$trows["department"];
-				$_SESSION["usertype"] = $trows["usertype"];
-				$_SESSION["accesslevel"] = $trows["accesslevel"];
-				$_SESSION["image"] = $trows["image"];
-				$_SESSION["status"] = $trows["status"];
-				$_SESSION["usermenu"] = $trows["usertype"];
-			  $_SESSION["usreid"] = encryptor("encrypt",$trows["id"]);
-				$_SESSION["level"] = 'staff';
-				$_SESSION["pageaccess"] = "fromstaff";
-				$_SESSION["studeymode"] = encryptor("encrypt","Full Time");
+          //   echo '<script>alert("'.$trows["department"].'")</script>';
+          $_SESSION["username"] = $trows["username"];
+          $_SESSION["gsm"] = $trows["gsm"];
+          $_SESSION["deptname"] = @$dpt_ids["names"];
+          $_SESSION["password"] = $trows["password"];
+          $_SESSION["names"] = $trows["names"];
+          $_SESSION["designation"] = $trows["designation"];
+          $_SESSION["school"] = $trows["school"];
+          $_SESSION["dept_id"] = @$dpt_ids["dept_id"];//$trows["department"];
+          $_SESSION["department"] =$trows["department"];
+          $_SESSION["usertype"] = $trows["usertype"];
+          $_SESSION["accesslevel"] = $trows["accesslevel"];
+          $_SESSION["image"] = $trows["image"];
+          $_SESSION["status"] = $trows["status"];
+          $_SESSION["usermenu"] = $trows["usertype"];
+          $_SESSION["usreid"] = encryptor("encrypt",$trows["id"]);
+          $_SESSION["level"] = 'staff';
+          $_SESSION["pageaccess"] = "fromstaff";
+          $_SESSION["studeymode"] = encryptor("encrypt","Full Time");
 
 				    echo '<div class="alert alert-success outline alert-dismissible fade show" role="alert"><i data-feather="thumbs-up"></i><b>Wait,</b> loading dashboard....</div><script>setTimeout(function(){location.href="admin/"},1000)</script>';
 			}

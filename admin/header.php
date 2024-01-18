@@ -10,6 +10,12 @@ if(isset($_GET["logout"]))
   session_destroy();
   echo '<script>location.replace("../") </script>';
 }
+$staff_id = encryptor('decrypt',$_SESSION["usreid"]);
+$fetch_staffs = $pdo->prepare("SELECT * FROM `staff` WHERE `id`=?");
+$fetch_staffs->execute([$staff_id]);
+$staffrows = $fetch_staffs->fetch();
+extract($staffrows);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +23,7 @@ if(isset($_GET["logout"]))
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Admin Portal</title>
+    <title>Staff Portal</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -48,7 +54,7 @@ if(isset($_GET["logout"]))
                 <!--change to offline or busy as needed-->
               </div>
               <div class="nav-profile-text d-flex ms-0 mb-3 flex-column">
-                <span class="font-weight-semibold mb-1 mt-2 text-center"><?php echo $_SESSION["names"];?></span>
+                <span class="font-weight-semibold mb-1 mt-2 text-center"><?php echo $names;?></span>
                 <span class="text-secondary icon-sm text-center"><?php echo $_SESSION["username"];?></span>
               </div>
             </a>
@@ -60,7 +66,7 @@ if(isset($_GET["logout"]))
               <div class="small font-weight-light pt-1">Welcome Back! </div>
             </a>
           </li>
-      <?php 
+      <?php
       if($_SESSION["usertype"]==1){ include "sidebar_admin.php";}
       else 
       if($_SESSION["usertype"]==2){ include "sidebar_registry.php";}

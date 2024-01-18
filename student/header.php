@@ -10,7 +10,6 @@ if(isset($_GET["logout"]))
   session_destroy();
   echo '<script>location.replace("../") </script>';
 }
-$semester_arr = array(1=>"First Semester", 2=>"Second Semester", 3=>"Third Semester");
 // if (!isset($_SESSION)){ session_start(); }
 //fetch students record
 if(isset($_GET["matno"])){ $_SESSION["student_id"] = $_GET["matno"];}
@@ -48,7 +47,6 @@ $colg->execute([$student_college_id]);
 $stcolleges = $colg->fetch();
 $student_college = $stcolleges["college"];
 
-
 $schl = $pdo->prepare("SELECT * FROM `schools` WHERE `id`=? ");
 $schl->execute([$student_school_id]);
 $stschl = $schl->fetch();
@@ -62,10 +60,9 @@ $stu_p = $pdo->query("SELECT * FROM `stu_payloader` WHERE `matno`='$student_matn
 $stu_course_reg = $pdo->query("SELECT * FROM `stu_course_reg` WHERE `matno`='$student_matno' AND `session` = '$school_activesession' AND `semester` = '$school_activesemester'");
 $course_reg_row = $stu_course_reg->fetch();
 
-
 $stu_passpt = $pdo->query("SELECT `file` FROM `stu_files` WHERE `matno`='$student_matno' AND `certificate` = 'Passport'");
 $file_ppt = $stu_passpt->fetch();
-$stu_passport = $file_ppt["file"];
+$stu_passport = @$file_ppt["file"];
 ?>
 <!DOCTYPE html>
 <html lang="en">

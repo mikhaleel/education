@@ -109,4 +109,5 @@ $res_conf = $res_config->fetch();
 
 $conf_semester = $res_conf['semester'];
 $conf_session = $res_conf['sessions'];
+//$semester_arr = array(1=>"First Semester", 2=>"Second Semester", 3=>"Third Semester");
 $semester_arr = array(1=>"First Semester", 2=>"Second Semester",3=>"Third Semester");?>

@@ -109,7 +109,7 @@ include("../data/db.php");?>
                     <button class="btn btn-primary submit-btn" type="Submit" name="btn">SIGN IN</button>
                   </div>
                   <div class="wrapper mt-5 text-gray">
-                    <p class="footer-text">Copyright <?php echo date('Y');?> © Renew Portal -  All rights reserved.</p>
+                    <p class="footer-text">Copyright <?php echo date('Y');?> © GIGBADI -  All rights reserved.</p>
                     <ul class="auth-footer text-gray">
                       <li>
                         <a href="#"><b>Having Issues?</b></a>

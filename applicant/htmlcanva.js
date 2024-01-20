@@ -1,9 +1,9 @@
 function makePayment() {
        //  let refno ='NSPZEVAPP'+Math.floor((Math.random() * 1000000000) + 1);
-
+//alert("I can see you");
     FlutterwaveCheckout({
-     // public_key: "FLWPUBK_TEST-SANDBOXDEMOKEY-X",
-     public_key: "FLWPUBK-993353b917cbc6dbf275ba7f099382fc-X",
+    //  public_key: "FLWPUBK_TEST-SANDBOXDEMOKEY-X",
+    public_key: "FLWPUBK_TEST-2cc918cbbc1cb8f1d09b3fc52a8ef2f0-X",
       tx_ref: 'NSPZEVAPP'+Math.floor((Math.random() * 1000000000) + 1),
       amount: document.getElementById("amount").value,
       currency: "NGN",
@@ -19,9 +19,9 @@ function makePayment() {
         name: document.getElementById("names").value,
       },
       customizations: {
-        title: "FLAILAS",
+        title: "SCHOOLNAME",
         description: document.getElementById("desc").value,
-        logo: "https://flailas.sch.ng/logo.png",
+        logo: "../schoolog.png",
       },
     });
   }

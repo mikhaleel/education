@@ -1,4 +1,4 @@
-<?php include "header.php"?>
+<?php include ("header.php");?>
       <!-- partial:partials/_settings-panel.html -->
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
@@ -20,40 +20,55 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
                 <div class="card card-statistics">
                   <div class="card-body pb-0">
                     <p class="text-muted">Acceptance Fee (<?php echo $acceptancefee;?>)</p>
                     <div class="d-flex align-items-center">
-                      <h4 class="font-weight-semibold text-success "><?php echo $acceptancelink;?></h4>
+                      <h4 class="font-weight-semibold text-success "><?php 
+                      
+                      if($app_infor['adm_status'] == "Yes")
+                      {
+                         echo $acceptancelink;
+                      }?></h4>
                     </div>
                   </div>
                   <canvas class="mt-2" height="40" id="statistics-graph-1"></canvas>
                 </div>
-              </div>
+              </div><!--
               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
                 <div class="card card-statistics">
                   <div class="card-body pb-0">
-                    <p class="text-muted">Screening Fee (<?php echo $screeningfee;?>)</p>
+                    <p class="text-muted">Screening Fee (<?php //echo $screeningfee;?>)</p>
                     <div class="d-flex align-items-center">
-                      <h4 class="font-weight-semibold text-danger"><?php echo $screninglink;?></h4>
+                      <h4 class="font-weight-semibold text-danger"><?php //echo $screninglink;?></h4>
                     </div>
                   </div>
                   <canvas class="mt-2" height="40" id="statistics-graph-3"></canvas>
                 </div>
-              </div>
-              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              </div>-->
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
                 <div class="card card-statistics">
                   <div class="card-body pb-0">
                     <p class="text-muted">School Fee (<?php echo $schoolfee;?>)</p>
                     <div class="d-flex align-items-center">
-                      <h4 class="font-weight-semibold text-success"><?php echo $schoolfeelink;?></h4>
+                      <h4 class="font-weight-semibold text-success"><?php
+                      
+                      if($app_infor['screen_status'] == "Yes")
+                      {
+                        echo "School Fee: " .$schoolfeelink;
+                      }
+                      else
+                      {
+                        echo "<div class='alert alert-info text-danger'>Please go (whith your credentials) <br>for physical screening : </div>";
+                      }
+                     // echo $schoolfeelink;?></h4>
                     </div>
                   </div>
                   <canvas class="mt-2" height="40" id="statistics-graph-2"></canvas>
                 </div>
               </div>
-              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
                 <div class="card card-statistics">
                   <div class="card-body pb-0">
                     <p class="text-muted">Application Status</p>
@@ -71,7 +86,18 @@
                   <div class="card-header header-sm d-flex justify-content-between align-items-center">
                     <h4 class="card-title">Reports</h4>
                     <div class="wrapper d-flex align-items-center">
-                      <p>Action</p>
+                      <p><?php 
+                      if($app_infor["school_fee"] == 'paid'){
+                        if($app_infor["matno"] == NULL OR $app_infor["matno"] == "")
+                        {
+                          echo "<a class='btn btn-warning'>Generate Matric Number</a>";
+                        }
+                        else
+                        {
+                          echo "Matric No: ".$app_infor["matno"];
+                        }
+                      }
+                      ?></p>
                     </div>
                   </div>
                   <div class="card-body no-gutter">
@@ -97,7 +123,7 @@
                           <div class="ms-auto">
                             <?php if($acceptancefee !== 'paid')
                             {
-                              echo "<div class='alert alert-info text-danger'>To print your admission offer letter, please click on the pay now to pay for Acceptance fee: ". $screninglink. "</div>";
+                              echo "<div class='alert alert-info text-danger'>To print your admission offer letter, please click on the pay now to pay for Acceptance fee: ". $acceptancelink. "</div>";
                             }else
                             {?>
                               <a href="offer_letter?appno=<?php echo $_GET["appno"];?>" target="_blank">Click here to print your Addmission Offer Letter. </a>Congratulations!!
@@ -117,21 +143,15 @@
                                <a href="payable?appno=<?php echo $_GET["appno"];?>" target="_blank">Click here to print Fees payable</a>
                             <?php if($acceptancefee == 'paid')
                             {
-                              if($screeningfee !== 'paid')
-                              { 
-                                echo "<div class='alert alert-info text-danger'>Please click on the pay now to pay for Screening fee: ".$screninglink."</div>";
-                              }
-                              else
-                              {
+                              
                                 if($app_infor['screen_status'] == "Yes")
                                 {
-                                  echo $schoolfeelink;
+                                  echo "School Fee: " .$schoolfeelink;
                                 }
                                 else
                                 {
                                   echo "<div class='alert alert-info text-danger'>Please go (whith your credentials) for physical screening : </div>";
                                 }
-                              }
                               ?>
                             <?php 
                             }

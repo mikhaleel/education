@@ -64,7 +64,7 @@ p.MsoListParagraphCxSpLast
 </head>
 
 <p align="center" class="MsoNormal"><b><span style="mso-bidi-font-size:16.0pt"><![if !vml]>
-<img height="60" src="logo.png" v:shapes="_x0000_i1025" width="78"><![endif]>
+<img height="60" src="../schoologo.png" v:shapes="_x0000_i1025" width="78"><![endif]>
 </span><span style="font-size:11.0pt;mso-bidi-font-size:
 13.5pt"><o:p></o:p></span></b></p>
 <p align="center" class="MsoNormal"><b>

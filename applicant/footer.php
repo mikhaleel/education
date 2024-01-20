@@ -1,8 +1,8 @@
   <!-- partial:partials/_footer.html -->
   <footer class="footer">
             <div class="container clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © <?php echo date('Y');?> <a href="http://#/" target="_blank">Renew Portal</a> -  All rights reserved.</span>
-              <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center"><i class="mdi mdi-heart text-danger"></i> ULTRACODELTD
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © <?php echo date('Y');?>  -  All rights reserved.</span>
+              <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center"><i class="mdi mdi-heart text-danger"></i> GIGBADI LTD
               </span>
             </div>
           </footer>

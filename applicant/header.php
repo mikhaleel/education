@@ -51,7 +51,7 @@ if($app_infor['adm_status'] == "No")
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/demo_11/style.css">
     <!-- End Layout styles -->
-    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <link rel="shortcut icon" href="../schoologo.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -60,9 +60,9 @@ if($app_infor['adm_status'] == "No")
         <div class="container d-flex flex-row nav-top">
           <div class="text-center navbar-brand-wrapper d-flex align-items-top">
             <a class="navbar-brand brand-logo" href="index-2.html">
-              <img src="https://demo.bootstrapdash.com/star-admin-pro/src/assets/images/logo_2.svg" alt="logo" /> </a>
+              <img src="../schoologo.png" alt="logo" /> </a>
             <a class="navbar-brand brand-logo-mini" href="index-2.html">
-              <img src="https://demo.bootstrapdash.com/star-admin-pro/src/assets/images/logo-mini.svg" alt="logo" /> </a>
+              <img src="../schoologo.png" alt="logo" /> </a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center">
             <form action="#" class="d-none d-sm-block">

@@ -10,8 +10,8 @@ $app_data = $checkq->fetch();
 $programme = $app_data["programme"];
 list($programme_type) = explode(' IN', $programme);
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC>
+<html xmlns="">
 
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -53,7 +53,6 @@ table.MsoTableGrid
 }
 </style>
 
-
 <script>
 	function printDiv() {
 	    var divContents = document.getElementById("appform").innerHTML;
@@ -66,20 +65,23 @@ table.MsoTableGrid
 </head>
 
 <body>
-
+	<div style="width:100%; text-align:center">
+		<img src="../schoologo.png">
+		<h4><?php echo strtoupper($school_names);?></h4>
+	</div>
 <table border="1" cellpadding="0" cellspacing="0" class="MsoTableGrid" style="width:100%;;border-collapse:collapse;
  border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;
  mso-padding-alt:0in 5.4pt 0in 5.4pt" width="722" align="center">
 	<tr style="mso-yfti-irow:0;mso-yfti-firstrow:yes;">
 		<td colspan="13" style="border:solid windowtext 1.0pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;" valign="top" class="auto-style1">		
-                <img src="eyaimas.png" alt="EYAIMAS" style="width: 120px; height: 100px;" class="img-responsive" />
+            <img src="../schoologo.png" alt="schoollogo" style="width: 120px; height: 100px;" class="img-responsive" />
                 <b><span style="font-size:16.0pt"><br />
 		<span class="auto-style5"><?php echo strtoupper($school_names);?> 
 		</span></span></b><br />
 		<span class="about-sub-title">
 		<span data-wow-delay=".2s" data-wow-duration="1s" style="font-size: 14.0pt">
-		<strong>MINNA - NIGER STATE</strong></span></span>
+		<strong><?php echo strtoupper($school_address);?> </strong></span></span>
 		<span style="font-size:12.0pt"><strong><br />
 		</strong>
 		<span class="about-sub-title">

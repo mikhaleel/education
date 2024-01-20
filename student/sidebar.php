@@ -5,7 +5,7 @@
           <li class="nav-item nav-profile border-bottom">
             <a href="#" class="nav-link flex-column">
               <div class="nav-profile-image">
-               <?php echo '<img src="'.$stu_passport.'" alt="profile">';?>
+               <?php echo '<img src="'.@$stu_passport.'" alt="profile">';?>
                 <!--change to offline or busy as needed-->
                 <!-- <img src="uploads/NDCS_022_012_PrimaryCertificate.png"> -->
               </div>
@@ -55,19 +55,19 @@
           <li class="nav-item">
             <a class="nav-link" href="result?matno=<?php echo encryptor('encrypt',$student_id);?>">
               <i class="mdi mdi-television-guide menu-icon"></i>
-              <span class="menu-title">Result</span>
+              <span class="menu-title">Results</span>
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="accommodation?matno=<?php //echo encryptor('encrypt',$student_id);?>">
+          <li class="nav-item">
+            <a class="nav-link" href="accommodation?matno=<?php echo encryptor('encrypt',$student_id);?>">
               <i class="mdi mdi-hospital-building menu-icon"></i>
               <span class="menu-title">Accommodation</span>
             </a>
-          </li> -->
+          </li> 
           <li class="nav-item">
             <a class="nav-link" href="payment?matno=<?php echo encryptor('encrypt',$student_id);?>">
               <i class=" mdi mdi-currency-ngn menu-icon"></i>
-              <span class="menu-title">Payment/Recipt</span>
+              <span class="menu-title">Payment/Receipt</span>
             </a>
           </li>
         

@@ -41,7 +41,7 @@ if(isset($_GET['final']))
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/demo_11/style.css">
     <!-- End Layout styles -->
-    <link rel="shortcut icon" href="images/favicon.html" />
+    <link rel="shortcut icon" href="../schoologo.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -50,22 +50,11 @@ if(isset($_GET['final']))
         <div class="container d-flex flex-row nav-top">
           <div class="text-center navbar-brand-wrapper d-flex align-items-top">
             <a class="navbar-brand brand-logo" href="../../index-2.html">
-              <img src="https://demo.bootstrapdash.com/star-admin-pro/src/assets/images/logo_2.svg" alt="logo" /> </a>
-            <a class="navbar-brand brand-logo-mini" href="../../index-2.html">
-              <img src="https://demo.bootstrapdash.com/star-admin-pro/src/assets/images/logo-mini.svg" alt="logo" /> </a>
+              <img src="../schoologo.png" alt="logo" /> </a>
+            <a class="navbar-brand brand-logo-mini" href="index">
+              <img src="../schoologo.png" alt="logo" /> </a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center">
-            <form action="https://demo.bootstrapdash.com/star-admin-pro/src/demo_11/pages/forms/form-action" class="d-none d-sm-block">
-              <div class="input-group search-box">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="mdi mdi mdi-magnify"></i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" placeholder="Type to search…">
-                <i class="mdi mdi mdi-close search-close"></i>
-              </div>
-            </form>
             <ul class="navbar-nav ms-auto">
               <li class="nav-item dropdown">
               </li>
@@ -77,7 +66,7 @@ if(isset($_GET['final']))
                     <span class="profile-text"><?php echo $app_infor["names"];?></span>
                     <span class="user-designation">Applicant</span>
                   </div>
-                  <div class="display-avatar bg-inverse-primary text-primary">AS</div>
+                  <!-- <div class="display-avatar bg-inverse-primary text-primary">AS</div> -->
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                   <div class="dropdown-header text-center">
@@ -94,7 +83,6 @@ if(isset($_GET['final']))
           </div>
         </div>
     
-        
       </nav>
       <!-- partial -->
       <!-- partial:../../partials/_settings-panel.html -->

@@ -23,6 +23,7 @@ $student_matno = $student_data["matno"];
 $student_level = $student_data["level"];
 $student_password = $student_data["password"];
 $student_sex = $student_data["sex"];
+$gender = $student_sex; 
 $student_dob = $student_data["dob"];
 $student_tribe = $student_data["tribe"];
 $student_religion = $student_data["religion"];
@@ -45,7 +46,7 @@ $student_semester = $student_data["semester"];
 $colg = $pdo->prepare("SELECT * FROM `colleges` WHERE `id`=? ");
 $colg->execute([$student_college_id]);
 $stcolleges = $colg->fetch();
-$student_college = $stcolleges["college"];
+$student_college = @$stcolleges["college"];
 
 $schl = $pdo->prepare("SELECT * FROM `schools` WHERE `id`=? ");
 $schl->execute([$student_school_id]);

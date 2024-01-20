@@ -72,7 +72,7 @@ else
                         <p class="mt-3 mb-2">
                           <b><?php echo $school_names;?></b>
                         </p>
-                        <p><?php echo $school_address;?>.<br> Invoice Date : <?php $date = date("Y-m-d"); echo date('jS M Y', strtotime($date));?><br>Due Date : <?php $ddate = $duedate; echo date('jS M Y', strtotime($ddate));?></p>
+                        <p><?php echo $school_address;?>.<br> Invoice Date : <?php $date = date("Y-m-d"); echo date('jS M Y', strtotime($date));?><br>Due Date : <?php $ddate = $duedate; echo $duedate;?></p>
                       </div>
                       <div class="col-lg-3 pr-0">
                         <p class="mt-3 mb-2 text-right">

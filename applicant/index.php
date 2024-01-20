@@ -29,8 +29,8 @@
             </div>
             <div class="col-12 col-md-8 h-100 bg-white">
               <div class="auto-form-wrapper d-flex align-items-center justify-content-center flex-column">
-                <img src="../applicant/assets/images/carousel/banner_9.jpg" class="rounded-circle" width="100px" height="100px">
-              <h3 class="mr-auto">Welcome To Renewed Applicant Portal</h3>
+                <img src="../schoologo.png" class="rounded-circle" width="100px" height="100px">
+              <h3 class="mr-auto">Welcome To Applicant Portal</h3>
               &nbsp;
                 <p class="mb-5 mr-auto bg-secondary text-white"><br>&nbsp;Click the start fresh application button if you have no application number.<br>&nbsp;otherwise Click on the Continue Application button to continue your application from where you stop earlier.<br>&nbsp;<span>For enquiry call/whatsapp : +234 8135711660 OR +234 7038691624 </span><br>&nbsp;</p>
                
@@ -40,7 +40,7 @@
                     <a href="login" class="btn btn-warning submit-btn text-white">Continue Application</a>
                   </div>
                   <div class="wrapper mt-5 text-gray">
-                    <p class="footer-text">Copyright <?php echo date('Y');?> © Renew Portal -  All rights reserved.</p>
+                    <p class="footer-text">Copyright <?php echo date('Y');?> © GIGBADI LTD -  All rights reserved.</p>
                     <ul class="auth-footer text-gray">
                       <li>
                         <a href="#"><b>Having Issues?</b></a>

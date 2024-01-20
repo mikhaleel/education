@@ -1,11 +1,11 @@
-<?php session_start();$title = "Institute - Applicant Transaction Status";
-if(!isset($_SESSION['userapps'])){
-  echo '<script type="text/javascript">
-  window.close();
-</script>';
-echo '<script>window.location.href="../index";</script>';
-}?>
-<script src="../assets/jquery.min.js"></script>
+<?php session_start(); $title = "Institute - Applicant Transaction Status";
+// if(!isset($_SESSION['userapps'])){
+//   echo '<script type="text/javascript">
+//   window.close();
+// </script>';
+// echo '<script>window.location.href="../index";</script>';
+//}?>
+<script src="../jquery.min.js"></script>
 <title><?php echo $title;?></title>
 <?php include('../data/db.php');?>
 <?php
@@ -23,8 +23,8 @@ if(isset($_REQUEST['tx_ref']) || $_REQUEST['txid']){
 
 	if($status=='successful' || $status=='completed')
 	{
-		$tran_query = $pdo->prepare("SELECT * FROM `stu_payment_epay` WHERE `matno`=?");
-		$tran_query->execute([$matno]);
+		$tran_query = $pdo->prepare("SELECT * FROM `stu_payment_epay` WHERE `matno`=? AND `transaction_id`=?");
+		$tran_query->execute([$matno,$txid]);
 		$tran_row = $tran_query->fetch();
 		$total_tran_row = $tran_query->rowCount();
 		$fees_id = $tran_row['matno'];

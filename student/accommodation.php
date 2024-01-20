@@ -1,4 +1,4 @@
- <?php include "header.php"?>
+ <?php include ("header.php"); ?>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
@@ -30,7 +30,8 @@
                     <h4 class="card-title">List</h4>
                     <div class="row overflow-auto">
                       <div class="col-12">
-                        <table id="order-listing" class="table" cellspacing="0" width="100%">
+                      <div class="table-responsive">
+                        <table id="order-listing1" class="table" cellspacing="0" width="100%">
                           <thead>
                             <tr class="bg-primary text-white">
                               <th>SN</th>
@@ -39,8 +40,8 @@
                               <th>Room</th>
                               <th>Session</th>
                               <th>Semester</th>
-                              <th>Payment</th>
-                              <th>Action</th>
+                              <th>Status</th>
+                              <th>Amount</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -51,16 +52,12 @@
                               <td>53</td>
                               <td>2021/2022</td>
                               <td>1</td>
+                              <td>Paid</td>
                               <td>5,000</td>
-                              <td class="text-right">
-                                <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#EditModal">
-                                  <i class="mdi mdi-eye text-primary" data-bs-toggle="modal" data-bs-target="#EditModal"></i> Edit </button>
-                                <button class="btn btn-light">
-                                  <i class=" mdi mdi-check-all text-danger"></i> Deleted </button>
-                              </td>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -68,187 +65,64 @@
               </div>
             </div>
           </div>
-          <!--Edit Courses Start-->
-                    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel">Edit Hostels</h5>
-                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form>
-                                <div class="row">
-                                <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">College:</label>
-                                <select type="text" name="college" class="form-control">
-                                    <option>Choose</option>
-                                </select>
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Hostel:</label>
-                                <input type="text" name="hostel" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-12">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Category:</label>
-                                <select type="text" name="category" class="form-control">
-                                    <option>Choose</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                </select>
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Block:</label>
-                                <input type="text" name="block" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Room:</label>
-                                <input type="number" name="room" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Bedspaces:</label>
-                                <input type="number" name="bedspaces" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" name="occupied" class="col-form-label">Occupied:</label>
-                                <input type="number" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" name="amount" class="col-form-label">Amount:</label>
-                                <input type="number" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" name="occupied" class="col-form-label">Status:</label>
-                                <select type="text" name="status" class="form-control">
-                                    <option>Vacant</option>
-                                    <option>Reserve</option>
-                                    <option>Maintenance</option>
-                                </select>
-                              </div>
-                              </div>
-                                </div>
-                             
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                <!--Edit Courses End-->
                 
          <!--Add Courses Start-->
                     <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
+                      <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel">Add New Hostels</h5>
+                            <h5 class="modal-title" id="ModalLabel">Availbale Hostels</h5>
                             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
-                          <form>
-                                <div class="row">
-                                <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">College:</label>
-                                <select type="text" name="college" class="form-control">
-                                    <option>Choose</option>
-                                </select>
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Hostel:</label>
-                                <input type="text" name="hostel" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-12">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Category:</label>
-                                <select type="text" name="category" class="form-control">
-                                    <option>Choose</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                </select>
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Block:</label>
-                                <input type="text" name="block" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Room:</label>
-                                <input type="number" name="room" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Bedspaces:</label>
-                                <input type="number" name="bedspaces" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" name="occupied" class="col-form-label">Occupied:</label>
-                                <input type="number" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" name="amount" class="col-form-label">Amount:</label>
-                                <input type="number" class="form-control">
-                              </div>
-                              </div>
-                              <div class="col-6">
-                              <div class="form-group">
-                                <label for="recipient-name" name="occupied" class="col-form-label">Status:</label>
-                                <select type="text" name="status" class="form-control">
-                                    <option>Vacant</option>
-                                    <option>Reserve</option>
-                                    <option>Maintenance</option>
-                                </select>
-                              </div>
-                              </div>
-                                </div>
-                             
-                            </form>
-                          </div>
+                            <?php 
+                            $hostel = $pdo->prepare("SELECT * FROM `hostels` WHERE category = '$gender' AND `status` = 'vacant'");
+                            $hostel->execute([]);
+                            ?>
+                          <div class="table-responsive">
+                          <table id="order-listing" class="table">
+                          <thead>
+                            <tr class="bg-primary text-white">
+                              <th>SN</th>
+                              <th>Hostels</th>
+                              <th>Block</th>
+                              <th>Room</th>
+                              <th>Amount</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php $snn = 0; while($hostels = $hostel->fetch()){ $snn++;?>
+                            <tr>
+                              <td><?php echo $snn;?></td>
+                              <td><?php echo $hostels["hostel"];?></td>
+                              <td><?php echo $hostels["block"];?></td>
+                              <td><?php echo $hostels["room"];?></td>
+                              <td><?php echo $hostels["amount"];?></td>
+                              <td class="text-right">
+                                <a class="btn btn-light" href="stu_accom_invoice?matno=<?php echo encryptor("encrypt",$student_matno);?>&hid=<?php echo encryptor("encrypt",$hostels["id"]);?>" target="_blank">
+                                  <i class="mdi mdi-eye text-primary" data-bs-toggle="modal" data-bs-target="#EditModal"></i> Book this room </a>
+                                <!-- <button class="btn btn-light"> -->
+                                  <!-- <i class=" mdi mdi-check-all text-danger"></i> Deleted </button> -->
+                              </td>
+                            </tr>
+                            <?php }?>
+                          </tbody>
+                        </table>
+                       </div>
+                        </div>
                           <div class="modal-footer">
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <!-- <button type="submit" class="btn btn-success">Submit</button> -->
                             <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
                           </div>
                         </div>
                       </div>
                     </div>
                 <!--Add Courses End-->
-         <?php include "footer.php"?>
-         <div class="modal fade" id="exampModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <?php include "footer.php"?>
+                <div class="modal fade" id="exampModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                           <div class="modal-header">

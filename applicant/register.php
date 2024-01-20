@@ -19,7 +19,7 @@ include("../data/db.php");?>
     <!-- inject:css -->
     <link rel="stylesheet" href="assets/css/shared/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <link rel="shortcut icon" href="../schoologo.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -104,7 +104,7 @@ include("../data/db.php");?>
                         {
                           $level = "LEVEL1";
                         }
-                        $schn = "ACHS";
+                        $schn = $school_abb;
                         $selectappno = $pdo->query("SELECT `applno` FROM `appno`");
                         $fndapno = $selectappno->fetch();
                         $newapno = ($fndapno["applno"] + 1);
@@ -121,11 +121,11 @@ include("../data/db.php");?>
                         $insertrec->execute([$fullname, $application_no, $programme, $password, $contact, $email, $level, $year]);
                         //$appid = $pdo->lastInsertId();
                         if($insertrec){
-                          $_SESSION['userapps']=="app";
+                         // $_SESSION['userapps']=="app";
                           $invoicetype = encryptor("encrypt","Application fee");
                           $updt = $pdo->query("UPDATE `appno` SET applno = '".$newapno."'");
                           echo "<script>alert('Please copy down this Application number"." ". $application_no."')</script>";
-                          echo '<div class="alert alert-success">Loading payment Invoice.....</div><script>setTimeout(function(){location.href="app_invoice?appno='.encryptor("encrypt",$application_no).'&invtyp='.$invoicetype.'"},1000)</script>';
+                          echo '<div class="alert alert-success">Loading payment Invoice.....</div><script>setTimeout(function(){location.href="app_invoice?appno='.encryptor("encrypt",$application_no).'&invtyp='.$invoicetype.'"},100)</script>';
                         }
                       }  
                     }
@@ -195,13 +195,13 @@ include("../data/db.php");?>
                     <button class="btn btn-primary submit-btn" type="Submit" name="btn">Create Account</button>
                   </div>
                   <div class="wrapper mt-5 text-gray">
-                  <p class="footer-text">Copyright <?php echo date('Y');?> © Renew Portal -  All rights reserved.</p>
+                  <p class="footer-text">Copyright <?php echo date('Y');?> © GIGBDI LTD -  All rights reserved.</p>
                     <ul class="auth-footer text-gray">
                     <li>
                         <a href="#"><b>Having Issues?</b></a>
                       </li>
                       <li>
-                        <a href="#">Contact MIS </a>
+                        <a href="#">Contact ICT </a>
                       </li>
                     </ul>
                   </div>

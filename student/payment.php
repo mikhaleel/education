@@ -57,7 +57,7 @@
                     $stu_pay = $pdo->query("SELECT * FROM `stu_payloader` WHERE `matno`='$student_matno'");
                     while($pay_row = $stu_pay->fetch())
                     {?>
-                      <li class="list-group-item"><strong class="text-primary"><?php echo $pay_row["level"];?> <?php echo $semester_arr[$pay_row['semester']];?> </strong> : [School Fees] - <?php echo $pay_row["session"];?></strong>  
+                      <li class="list-group-item"><strong class="text-primary"><?php echo $pay_row["level"];?> <?php echo $semester_arr[$pay_row['semester']];?> </strong> : [<?php echo $pay_row["type"];?>] - <?php echo $pay_row["session"];?></strong>  
                       <strong class="text-success"> &#8358;<?php echo $pay_row["amount"];?></strong> 
                       <?php 
                       if($pay_row['status']=="paid")

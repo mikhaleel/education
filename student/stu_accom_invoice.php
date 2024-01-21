@@ -17,8 +17,8 @@ $payment_schedule= $payment_type->fetch();
 $duedate = date("d/m/Y");
 $amount = $payment_schedule['amount'];
 $pay_status = "unpaid";
-$payment_status = $pdo->prepare("SELECT * FROM `stu_payloader` WHERE `matno` = ? AND `type` = ?");
-$payment_status->execute([@$matno, $invtype]);
+$payment_status = $pdo->prepare("SELECT * FROM `stu_payloader` WHERE `matno` = ? AND `type` = ? AND `semester`=? AND `session`=?");
+$payment_status->execute([@$matno, $invtype,$school_activesemester,$school_activesession]);
 $fetchpay = $payment_status->fetch();
 $id = @$fetchpay['id'];
 if($payment_status->rowCount() == 0)

@@ -66,7 +66,7 @@ if($dbtbl_field == "school_fee")
 
 		$year = $checked["year"];
 		$pgr_abv = $gprg["abv"];
-		$deyear = $school_application_year;
+		$deyear = $school_app_year;
 		$yr = substr($deyear, -3);
 		
 		$foundcenter = $checked['study_center'];

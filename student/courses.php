@@ -4,7 +4,7 @@
           <div class="content-wrapper">
           <div class="page-header flex-wrap">
               <div class="header-left">
-              <h3 class="page-title"> Course Registration Page </h3>
+              <h3 class="page-title"> Course Registration </h3>
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
@@ -28,7 +28,7 @@
                     {
                       ?>
                       <p class="alert alert-warning"> 
-                        <span>New Course Registration for [<?php echo $student_level;?> <?php echo $semester_arr[$school_activesession];?>]</span>                                         
+                        <span>New Course Registration for [<?php echo $student_level;?> <?php echo $semester_arr[$school_activesemester];?>]</span>                                         
                         <a class="btn btn-warning pull-right" href="javascript:void(0);" NAME="coursereg" title="CourseRegistration" onClick=window.open("stu_course_reg?tid=<?php echo encryptor('encrypt',$student_id);?>","Ratting","width=1500,height=1170,left=150,top=50,toolbar=0,status=0,");>Register Now</a>
                        
                       </p>

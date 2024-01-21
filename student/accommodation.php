@@ -1,4 +1,9 @@
- <?php include ("header.php"); ?>
+ <?php include ("header.php"); 
+ $my_rooms = $pdo->prepare("SELECT * FROM `stu_accomodation` WHERE `matno` LIKE ?");
+ $my_roms = $pdo->prepare("SELECT * FROM `stu_accomodation` WHERE `matno` LIKE ? AND `semester` = ? AND `session`=?");
+ $my_rooms->execute([$student_matno]);
+ $my_roms->execute([$student_matno,$school_activesemester,$school_activesession]);
+ ?>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
@@ -23,9 +28,9 @@
                   <div class="card-body">
                   <div class="row">
                     <center>
-                <button class="btn btn-primary pull-left" data-bs-toggle="modal" data-bs-target="#exampleModal-4"><b>Check for Availability</b> <i class=" mdi mdi-plus "></i></button>
-                   <button class="btn btn-warning pull-right" data-bs-toggle="modal" data-bs-target="#exampModal"><b>Hostel Rules & Regulation</b> <i class=" mdi mdi-plus "></i></button></center>
-                     
+                <?php if($my_roms->rowCount()==0){?>
+                <button class="btn btn-primary pull-left" data-bs-toggle="modal" data-bs-target="#exampleModal-4"><b>Check for Availability</b> <i class=" mdi mdi-plus "></i></button><?php }?>
+                   <button class="btn btn-warning pull-right" data-bs-toggle="modal" data-bs-target="#exampModal"><b>Hostel Rules & Regulation</b> <i class=" mdi mdi-plus "></i></button></center>              
                       </div>
                     <h4 class="card-title">List</h4>
                     <div class="row overflow-auto">
@@ -45,16 +50,20 @@
                             </tr>
                           </thead>
                           <tbody>
+                            <?php $snr=0;
+                            while($host_rows = $my_rooms->fetch()){ $snr++;?>
                             <tr>
-                              <td>1</td>
-                              <td>ABUJA</td>
-                              <td>GA</td>
-                              <td>53</td>
-                              <td>2021/2022</td>
-                              <td>1</td>
-                              <td>Paid</td>
-                              <td>5,000</td>
+                              <td><?php echo $snr;?></td>
+                              <td><?php echo $host_rows["hostel"];?></td>
+                              <td><?php echo $host_rows["block"];?></td>
+                              <td><?php echo $host_rows["room"];?></td>
+                              <td><?php echo $host_rows["session"];?></td>
+                              <td><?php echo $host_rows["semester"];?></td>
+                              <td><?php echo $host_rows["status"];?></td>
+                              <td><?php echo $host_rows["amount"];?></td>
                             </tr>
+                            <?php 
+                            }?>
                           </tbody>
                         </table>
                       </div>
@@ -160,7 +169,7 @@
                             <li>Violation of residency Regulations shall attract appropriate punishment which may range from surcharge to permanent prohibition from stay in any of the Polytechnic Halls. </li>
                           </ol>
                           <h4>UNDERTAKING </h4>
-                          <p>I, <b>BELLO BILYAMINU</b> with Matric. No <b>DCM/020/008</b> accept residence in a Polytechnic Hall. Consequent upon this acceptance, I solemnly swear to abide by the regulations governing my residence and I accept liability in the event of a breach of any of the regulations.</p>
+                          <p>I, <b><?php echo $student_name;?></b> with Matric. No <b><?php echo $student_matno;?></b> accept residence in the institute's Hall. Consequent upon this acceptance, I solemnly swear to abide by the regulations governing my residence and I accept liability in the event of a breach of any of the regulations.</p>
                           </div>
                           <div class="modal-footer">
                             <!-- <button type="button" class="btn btn-success">Submit</button> -->

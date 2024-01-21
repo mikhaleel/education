@@ -14,12 +14,12 @@
             </a>
           </li>
           <hr>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="accommodation">
               <i class="mdi mdi-home-variant  menu-icon"></i>
               <span class="menu-title">Accommodation</span>
             </a>
-          </li> -->
+          </li> 
           <li class="nav-item">
             <a class="nav-link" href="admitted">
               <i class="mdi mdi-account-multiple menu-icon"></i>
@@ -36,6 +36,19 @@
             <a class="nav-link" href="courses">
               <i class="mdi mdi-book-variant menu-icon"></i>
               <span class="menu-title">Courses</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="my_course">
+              <i class="mdi mdi-book-variant menu-icon"></i>
+              <span class="menu-title">My Courses</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="allocate_c">
+              <i class="mdi mdi-book-variant menu-icon"></i>
+              <span class="menu-title">Courses Allocation</span>
             </a>
           </li>
           <li class="nav-item">

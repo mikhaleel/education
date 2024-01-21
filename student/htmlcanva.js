@@ -2,13 +2,13 @@ function makePayment() {
        //  let refno ='NSPZEVAPP'+Math.floor((Math.random() * 1000000000) + 1);
 
     FlutterwaveCheckout({
-     public_key: "FLWPUBK_TEST-SANDBOXDEMOKEY-X",
-    // public_key: "FLWPUBK_TEST-2cc918cbbc1cb8f1d09b3fc52a8ef2f0-X",
+    //  public_key: "FLWPUBK_TEST-SANDBOXDEMOKEY-X",
+    public_key: "FLWPUBK_TEST-2cc918cbbc1cb8f1d09b3fc52a8ef2f0-X",
       tx_ref: 'NSPZEVAPP'+Math.floor((Math.random() * 1000000000) + 1),
       amount: document.getElementById("amount").value,
       currency: "NGN",
       payment_options: "card, banktransfer, ussd",
-      redirect_url: "app_transaction_verify?txid="+document.getElementById("txid").value+"&id="+document.getElementById("student_id").value,
+      redirect_url: "stu_transaction_verify?txid="+document.getElementById("txid").value+"&id="+document.getElementById("student_id").value,
       meta: {
         consumer_id: document.getElementById("matno").value,
         consumer_mac: document.getElementById("names").value + "-" + document.getElementById("matno").value + "-" + document.getElementById("extra").value + "-Evening",
@@ -33,7 +33,7 @@ function makePayment() {
       onClose: () => swal("Oops!", " Payment cancelled.", "info"),
       onLoad: () => console.log("Widget loaded successfully"),
      
-      onSuccess: () => window.location.href="app_transaction_verifys?txid="+document.getElementById("txid").value+"&id="+document.getElementById("student_id").value+"&sys="+refno,
+      onSuccess: () => window.location.href="stu_transaction_verifys?txid="+document.getElementById("txid").value+"&id="+document.getElementById("student_id").value+"&sys="+refno,
         key: "pk_37ff2b25593f8a389a0b9f55407c52d264f98be2",
 
      //key: "pk_37ff2b25593f8a389a0b9f55407c52d264f98be2",

@@ -33,6 +33,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="appl_download">
+              <i class="mdi mdi-account-multiple menu-icon"></i>
+              <span class="menu-title">DLD/UPLDApplicant</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="courses">
               <i class="mdi mdi-book-variant menu-icon"></i>
               <span class="menu-title">Courses</span>

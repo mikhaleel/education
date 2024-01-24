@@ -36,8 +36,8 @@
                       </div>
                       
                       <?php 
-                      $app = $pdo->prepare("SELECT * FROM `applicant` WHERE `year` = ?");
-                      $app->execute([$school_app_year]);?>
+                      $app = $pdo->prepare("SELECT * FROM `applicant` WHERE `year` = ? AND `application_fee`= ?");
+                      $app->execute([$school_app_year, 'paid']);?>
                     <h4 class="card-title">List</h4>
                     <div id="offerResult">
                       <?php 
@@ -72,14 +72,14 @@
                             <?php $srn = 0;
                             while($approw = $app->fetch()){ $appnos = $approw["application_no"]; $srn++;?> 
                             <tr>
-                              <td>1</td>
+                              <td><?php echo $srn;?></td>
                               <td><?php echo $approw["application_no"];?></td>
                               <td><?php echo $approw["names"];?></td>
                               <td><?php echo $approw["gender"];?></td>
                               <td><?php echo $approw["adm_status"];?></td>
                               <td class="text-right">
                                   <button type="button" class="mdi mdi-eye text-info" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $approw["id"];?>">View </button>
-                                    
+                                  
                                     <div class="modal fade" id="exampleModal<?php echo $approw["id"];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                       <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
@@ -125,9 +125,9 @@
                                                   <th>Body</th>
                                                   <th>Date</th>
                                                 </tr>
-                                                <?php while($olrow = $olevel->fetch()){?>
+                                                <?php $snr=0; while($olrow = $olevel->fetch()){ $snr++;?>
                                                 <tr>
-                                                  <td>1</td>
+                                                  <td><?php echo $snr;?></td>
                                                   <td><?php echo $olrow["subject"];?></td>
                                                   <td><?php echo $olrow["grade"];?></td>
                                                   <td><?php echo $olrow["exambody"];?></td>
@@ -183,9 +183,6 @@
                                       </div>
                                     </div>
                                     <!-- Modal Ends -->
-
-                                <!-- <button class="btn btn-light">
-                                  <i class="mdi mdi-close text-danger"></i>Remove </button> -->
                               </td>
                             </tr>
                            <?php 

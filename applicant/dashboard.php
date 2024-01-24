@@ -26,10 +26,9 @@
                     <p class="text-muted">Acceptance Fee (<?php echo $acceptancefee;?>)</p>
                     <div class="d-flex align-items-center">
                       <h4 class="font-weight-semibold text-success "><?php 
-                      
                       if($app_infor['adm_status'] == "Yes")
                       {
-                         echo $acceptancelink;
+                         echo "Acceptance Fee: ".$acceptancelink;
                       }?></h4>
                     </div>
                   </div>
@@ -87,6 +86,7 @@
                     <h4 class="card-title">Reports</h4>
                     <div class="wrapper d-flex align-items-center">
                       <p><?php 
+                      echo '<div class="alert alert-warning" >';
                       if($app_infor["school_fee"] == 'paid'){
                         if($app_infor["matno"] == NULL OR $app_infor["matno"] == "")
                         {
@@ -94,8 +94,9 @@
                         }
                         else
                         {
-                          echo "Matric No: ".$app_infor["matno"];
+                          echo "<b class='text-primary'>Matric No: ".$app_infor["matno"].'</b>';
                         }
+                        echo ' Click here <a href="../">https://school.edu.ng</a> to login to student portal <br> Your uername is your Matric number:'.$app_infor["matno"].' and your default password is: Easy123</div>';
                       }
                       ?></p>
                     </div>
@@ -123,7 +124,11 @@
                           <div class="ms-auto">
                             <?php if($acceptancefee !== 'paid')
                             {
-                              echo "<div class='alert alert-info text-danger'>To print your admission offer letter, please click on the pay now to pay for Acceptance fee: ". $acceptancelink. "</div>";
+                              if($app_infor['adm_status'] == "Yes")
+                              {
+                                echo "<div class='alert alert-info text-danger'>To print your admission offer letter, please click on the pay now to pay for Acceptance fee</div>";
+                                 echo "Acceptance Fee: ".$acceptancelink;
+                              }
                             }else
                             {?>
                               <a href="offer_letter?appno=<?php echo $_GET["appno"];?>" target="_blank">Click here to print your Addmission Offer Letter. </a>Congratulations!!
@@ -143,7 +148,6 @@
                                <a href="payable?appno=<?php echo $_GET["appno"];?>" target="_blank">Click here to print Fees payable</a>
                             <?php if($acceptancefee == 'paid')
                             {
-                              
                                 if($app_infor['screen_status'] == "Yes")
                                 {
                                   echo "School Fee: " .$schoolfeelink;

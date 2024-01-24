@@ -8,6 +8,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="my_course">
+              <i class="mdi mdi-book-variant menu-icon"></i>
+              <span class="menu-title">My Courses</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="profile">
               <i class=" mdi mdi-account-card-details menu-icon"></i>
               <span class="menu-title">Profile</span>
